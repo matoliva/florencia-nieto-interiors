@@ -61,6 +61,30 @@ Fonts are registered via the Astro Fonts API (`astro.config.mjs`) and activated 
 | Secondary headings | `font-subheading` | Castorgate |
 | Body / UI / buttons | `font-body` | Avenir (applied to `body` by default) |
 
+### Type scale
+
+Four semantic type roles defined as CSS classes in `global.css` (`@layer components`) and exposed as Astro components. Scale ratio: Major Third (1.25×).
+
+| Role | CSS class | Component | Desktop | Mobile | Font |
+|---|---|---|---|---|---|
+| Display · Hero | `.text-display-hero` | `<Heading variant="hero">` | 72px | 40px | Leelawadee UI |
+| Display · Page H1 | `.text-display-h1` | `<Heading variant="h1">` | 52px | 32px | Leelawadee UI |
+| Editorial · H2 | `.text-editorial-h2` | `<Heading variant="h2">` | 32px | 24px | Castorgate |
+| Body copy | `.text-body` | `<Body>` | 18px | 16px | Avenir |
+
+**Using the components (preferred):**
+```astro
+import Heading from '../components/Heading.astro';
+import Body from '../components/Body.astro';
+
+<Heading variant="hero">Florencia Nieto</Heading>
+<Heading variant="h1">Interior Design</Heading>
+<Heading variant="h2">Selected Projects</Heading>
+<Body>We create spaces that reflect who you are…</Body>
+```
+
+`Heading` defaults to the correct HTML element (`hero`/`h1` → `<h1>`, `h2` → `<h2>`). Use the `as` prop to override. Both components accept a `class` prop for additional utilities.
+
 ## Internationalization (i18n)
 
 The site is bilingual: **English** (default, no URL prefix) and **Spanish** (`/es/` prefix). Configured via Astro's built-in i18n with `prefixDefaultLocale: false`.
@@ -99,6 +123,8 @@ All UI components live in `src/components/`. Visit `/showcase` (or `/es/showcase
 
 | Component | File | Variants / props |
 |---|---|---|
+| `Heading` | `Heading.astro` | `variant`: `hero`, `h1`, `h2`; optional `as` (override HTML tag), `class` |
+| `Body` | `Body.astro` | `as`: `p` (default), `div`, `span`; `class` |
 | `Button` | `Button.astro` | `variant`: `arrow` (→), `download` (↓), `outlined` |
 | `InlineLink` | `InlineLink.astro` | Gold underline link, uses `<slot />` |
 | `ExternalLink` | `ExternalLink.astro` | Opens `target="_blank"`, diagonal arrow ↗ |
@@ -114,3 +140,19 @@ All UI components live in `src/components/`. Visit `/showcase` (or `/es/showcase
 ## Astro + React boundary
 
 `.astro` components run server-side only (no browser JS by default). For interactivity, create `.tsx` React components and use a `client:*` directive when rendering them inside `.astro` files. Avoid adding React state or hooks inside `.astro` files.
+
+## TypeScript patterns in .astro files
+
+Strict mode means props destructured from `Astro.props` are inferred as `any`. When a component needs to index a `Record` with a prop value, cast the variable after destructuring rather than casting `Astro.props`:
+
+```typescript
+// interface Props uses Props['variant'] to stay "used" in strict mode
+interface Props { variant: 'hero' | 'h1' | 'h2' }
+const { variant } = Astro.props;
+type V = Props['variant'];
+const v = variant as V;                       // safe: Props defines the type
+const map: Record<V, string> = { ... };
+const result = map[v];                        // no implicit-any error
+```
+
+Do **not** cast `Astro.props as Props` at the destructuring site — that breaks Astro's type generation and external callers lose prop type-checking.

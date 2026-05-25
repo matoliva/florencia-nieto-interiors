@@ -1,0 +1,27 @@
+---
+type TagName = 'h1' | 'h2' | 'h3' | 'h4' | 'p' | 'div' | 'span';
+
+interface Props {
+  variant: 'hero' | 'h1' | 'h2';
+  as?: TagName;
+  class?: string;
+}
+
+const { variant, as, class: className } = Astro.props;
+
+type V = Props['variant'];
+const v = variant as V;
+
+const defaultTag: Record<V, TagName> = { hero: 'h1', h1: 'h1', h2: 'h2' };
+const Tag = (as ?? defaultTag[v]) as TagName;
+
+const variantClass: Record<V, string> = {
+  hero: 'text-display-hero',
+  h1:   'text-display-h1',
+  h2:   'text-editorial-h2',
+};
+---
+
+<Tag class:list={[variantClass[v], 'text-text-display', className]}>
+  <slot />
+</Tag>
