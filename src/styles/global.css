@@ -20,15 +20,67 @@
   --color-accent-gold:      #B89456;
   --color-accent-gold-soft: #C9A86A;
 
-  /* Typography */
+  /* Typography — families */
   --font-signature:  var(--font-andarilho);
   --font-heading:    var(--font-leelawadee);
   --font-subheading: var(--font-castorgate);
   --font-body:       var(--font-avenir);
+
+  /* Typography — type scale */
+  --font-size-display-hero:    4.5rem;   /* 72px desktop */
+  --font-size-display-hero-sm: 2.5rem;   /* 40px mobile  */
+  --font-size-display-h1:      3.25rem;  /* 52px desktop */
+  --font-size-display-h1-sm:   2rem;     /* 32px mobile  */
+  --font-size-editorial-h2:    2rem;     /* 32px desktop */
+  --font-size-editorial-h2-sm: 1.5rem;   /* 24px mobile  */
+  --font-size-body:            1.125rem; /* 18px desktop */
+  --font-size-body-sm:         1rem;     /* 16px mobile  */
 }
 
 @layer base {
   body {
     font-family: var(--font-body);
+  }
+}
+
+@layer components {
+  .text-display-hero {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-display-hero-sm);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+  @media (min-width: 768px) {
+    .text-display-hero { font-size: var(--font-size-display-hero); }
+  }
+
+  .text-display-h1 {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-display-h1-sm);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+  }
+  @media (min-width: 768px) {
+    .text-display-h1 { font-size: var(--font-size-display-h1); }
+  }
+
+  .text-editorial-h2 {
+    font-family: var(--font-subheading);
+    font-size: var(--font-size-editorial-h2-sm);
+    line-height: 1.25;
+    letter-spacing: 0em;
+  }
+  @media (min-width: 768px) {
+    .text-editorial-h2 { font-size: var(--font-size-editorial-h2); }
+  }
+
+  .text-body {
+    font-family: var(--font-body);
+    font-size: var(--font-size-body-sm);
+    line-height: 1.65;
+    letter-spacing: 0em;
+  }
+  @media (min-width: 768px) {
+    .text-body { font-size: var(--font-size-body); }
   }
 }

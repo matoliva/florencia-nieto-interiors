@@ -8,6 +8,7 @@ export default {
   'showcase.button.howItWorks': 'Cómo Funciona',
   'showcase.inlineLink.prefix': 'Link Inline ·',
   'showcase.inlineLink.label': 'Leer La Nota Del Estudio',
+  'showcase.section.typography': 'Tipografía',
   'showcase.section.links': 'Links y Navegación',
   'showcase.externalLink.instagram': 'Instagram',
   'showcase.navLink.about': 'Sobre Mí',
