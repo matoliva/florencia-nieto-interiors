@@ -16,4 +16,13 @@ export default {
   'showcase.navLink.services': 'Services',
   'showcase.navLink.shop': 'Shop',
   'showcase.navLink.contact': 'Contact',
+  'nav.home':             'Home',
+  'nav.about':            'About',
+  'nav.projects':         'Selected Projects',
+  'nav.contact':          'Contact',
+  'nav.services':         'Services',
+  'social.instagram':     'Instagram',
+  'social.linkedin':      'LinkedIn',
+  'social.houzz':         'Houzz',
+  'social.email':         'Email',
 } as const;
