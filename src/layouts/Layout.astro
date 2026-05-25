@@ -1,10 +1,13 @@
 ---
 import { Font } from "astro:assets";
+import LanguageSwitcher from "../components/LanguageSwitcher.astro";
 import "../styles/global.css";
+
+const lang = Astro.currentLocale ?? 'en';
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -21,6 +24,7 @@ import "../styles/global.css";
 		<Font cssVariable="--font-avenir" />
 	</head>
 	<body>
+		<LanguageSwitcher />
 		<slot />
 	</body>
 </html>
