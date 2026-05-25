@@ -1,6 +1,6 @@
 ---
 import { Font } from "astro:assets";
-import LanguageSwitcher from "../components/LanguageSwitcher.astro";
+import Sidebar from "../components/Sidebar.astro";
 import "../styles/global.css";
 
 const lang = Astro.currentLocale ?? 'en';
@@ -24,8 +24,12 @@ const lang = Astro.currentLocale ?? 'en';
 		<Font cssVariable="--font-avenir" />
 	</head>
 	<body>
-		<LanguageSwitcher />
-		<slot />
+		<div class="hidden lg:block">
+			<Sidebar />
+		</div>
+		<main class="w-full lg:ml-60">
+			<slot />
+		</main>
 	</body>
 </html>
 

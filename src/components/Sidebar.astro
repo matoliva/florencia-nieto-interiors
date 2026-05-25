@@ -1,0 +1,85 @@
+---
+import { Image, getImage } from 'astro:assets';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { useTranslations } from '../i18n/utils';
+import NavLink from './NavLink.astro';
+import ExternalLink from './ExternalLink.astro';
+import logoImg from '../assets/images/florenciaNietoLogo.png';
+import textureImg from '../assets/images/texture.jpg';
+
+const locale = Astro.currentLocale ?? 'en';
+const t = useTranslations(locale);
+const { pathname } = Astro.url;
+
+const basePath = pathname.replace(/^\/(es)(\/|$)/, '/');
+const isActive = (route: string) =>
+  route === '/' ? basePath === '/' : basePath.startsWith(route);
+
+const texture = await getImage({ src: textureImg, format: 'webp', width: 480 });
+
+const navLinks = [
+  { key: 'nav.home'     as const, route: '/'         },
+  { key: 'nav.about'    as const, route: '/about'    },
+  { key: 'nav.projects' as const, route: '/projects' },
+  { key: 'nav.contact'  as const, route: '/contact'  },
+  { key: 'nav.services' as const, route: '/services' },
+];
+
+const socialLinks = [
+  { key: 'social.instagram' as const, href: 'https://www.instagram.com/florencianieto.interiors/' },
+  { key: 'social.linkedin'  as const, href: 'https://www.linkedin.com/in/florencianieto/'        },
+  { key: 'social.houzz'     as const, href: 'https://www.houzz.com/pro/florencianieto87'          },
+  { key: 'social.email'     as const, href: 'mailto:florencianieto.interiors@gmail.com'           },
+];
+---
+
+<aside
+  style={`background-color: #F8F4ED; background-image: url('${texture.src}'); background-blend-mode: multiply; background-repeat: no-repeat; background-size: cover; background-position: top left;`}
+  class="fixed top-0 left-0 h-screen w-60 overflow-hidden"
+>
+  <div class="flex flex-col h-full pt-[48px] px-8 pb-8">
+    <a href={getRelativeLocaleUrl(locale, '/')} class="block">
+      <Image
+        src={logoImg}
+        alt="Florencia Nieto"
+        width={200}
+        class="w-50 h-auto"
+      />
+    </a>
+
+    <nav class="mt-10 flex flex-col gap-[22px]" aria-label="Main navigation">
+      {navLinks.map(({ key, route }) => (
+        <NavLink
+          label={t(key)}
+          href={getRelativeLocaleUrl(locale, route)}
+          active={isActive(route)}
+        />
+      ))}
+    </nav>
+
+    <div class="mt-auto pt-10 border-t border-[rgba(44,42,40,0.08)] flex flex-col gap-5">
+      {socialLinks.map(({ key, href }) => (
+        <ExternalLink label={t(key)} href={href} />
+      ))}
+    </div>
+  </div>
+</aside>
+
+<style>
+  aside {
+    border-right: 1px solid rgba(44, 42, 40, 0.08);
+  }
+
+  aside::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(248, 244, 237, 0.55), rgba(248, 244, 237, 0.78));
+    pointer-events: none;
+  }
+
+  aside > div {
+    position: relative;
+    z-index: 1;
+  }
+</style>
