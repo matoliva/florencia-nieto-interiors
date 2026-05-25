@@ -1,0 +1,25 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+const { pathname } = Astro.url;
+const currentLocale = Astro.currentLocale ?? 'en';
+
+// Strip any locale prefix to get the base path for URL generation
+const basePath = pathname.replace(/^\/(es)(\/|$)/, '/');
+
+const locales = [
+  { code: 'en', label: 'EN' },
+  { code: 'es', label: 'ES' },
+];
+---
+
+<nav>
+  {locales.map(({ code, label }) => (
+    <a
+      href={getRelativeLocaleUrl(code, basePath)}
+      aria-current={currentLocale === code ? 'true' : undefined}
+    >
+      {label}
+    </a>
+  ))}
+</nav>

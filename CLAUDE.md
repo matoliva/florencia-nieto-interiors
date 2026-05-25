@@ -24,8 +24,10 @@ pnpm astro check  # Type-check .astro files
 ```
 src/
   pages/       # Routes (Astro file-based routing)
+    es/        # Spanish variants — mirrors src/pages/ structure
   layouts/     # Layout.astro wraps pages via <slot />
   components/  # Reusable UI components (.astro or .tsx)
+  i18n/        # Translation strings and helpers
   assets/      # Static assets processed by Vite (images, SVGs)
   styles/      # global.css imported by Layout.astro
 public/        # Copied verbatim to dist/ (favicons, fonts, etc.)
@@ -58,6 +60,29 @@ Fonts are registered via the Astro Fonts API (`astro.config.mjs`) and activated 
 | Primary headings | `font-heading` | Leelawadee UI |
 | Secondary headings | `font-subheading` | Castorgate |
 | Body / UI / buttons | `font-body` | Avenir (applied to `body` by default) |
+
+## Internationalization (i18n)
+
+The site is bilingual: **English** (default, no URL prefix) and **Spanish** (`/es/` prefix). Configured via Astro's built-in i18n with `prefixDefaultLocale: false`.
+
+**Adding a new page:** always create a twin in `src/pages/es/`. Example:
+```
+src/pages/about.astro      → /about
+src/pages/es/about.astro   → /es/about
+```
+
+**Translation strings** live in `src/i18n/en.ts` and `src/i18n/es.ts` as flat key-value objects. Add new keys to both files simultaneously.
+
+**Using translations in a page:**
+```astro
+---
+import { useTranslations } from '../i18n/utils';
+const t = useTranslations(Astro.currentLocale);
+---
+<h1>{t('hero.title')}</h1>
+```
+
+`Layout.astro` sets `<html lang>` automatically from `Astro.currentLocale` and renders `<LanguageSwitcher />` on every page.
 
 ## Astro + React boundary
 
