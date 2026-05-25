@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+@theme {
+  /* Surfaces */
+  --color-surface-primary:   #F8F4ED;
+  --color-surface-secondary: #F2EBE0;
+  --color-surface-tertiary:  #E8DFD0;
+  --color-surface-subtle:    #DBD2C2;
+
+  /* Borders */
+  --color-border-default: #C8BFB1;
+
+  /* Text */
+  --color-text-tertiary:  #9A938A;
+  --color-text-secondary: #5B5651;
+  --color-text-primary:   #2C2A28;
+  --color-text-display:   #1A1816;
+
+  /* Accent — editorial use only */
+  --color-accent-gold:      #B89456;
+  --color-accent-gold-soft: #C9A86A;
+
+  /* Typography */
+  --font-signature:  var(--font-andarilho);
+  --font-heading:    var(--font-leelawadee);
+  --font-subheading: var(--font-castorgate);
+  --font-body:       var(--font-avenir);
+}
+
+@layer base {
+  body {
+    font-family: var(--font-body);
+  }
+}
