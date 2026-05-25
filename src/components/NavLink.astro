@@ -1,0 +1,28 @@
+---
+interface Props {
+  label: string;
+  href: string;
+  active?: boolean;
+  class?: string;
+}
+
+const { label, href, active = false, class: className } = Astro.props;
+---
+
+<a
+  href={href}
+  class:list={[
+    'group inline-flex flex-col self-start font-body uppercase tracking-widest text-sm transition-colors duration-200',
+    active ? 'text-accent-gold' : 'text-text-primary hover:text-accent-gold',
+    className,
+  ]}
+>
+  {label}
+  <span
+    aria-hidden="true"
+    class:list={[
+      'h-px bg-accent-gold mt-2 transition-all duration-300 ease-out',
+      active ? 'w-1/2' : 'w-0 group-hover:w-1/2',
+    ]}
+  ></span>
+</a>

@@ -84,6 +84,33 @@ const t = useTranslations(Astro.currentLocale);
 
 `Layout.astro` sets `<html lang>` automatically from `Astro.currentLocale` and renders `<LanguageSwitcher />` on every page.
 
+## Component library
+
+All UI components live in `src/components/`. Visit `/showcase` (or `/es/showcase`) to see them rendered.
+
+### Interactive elements — shared conventions
+
+- **Font size:** `text-sm` (14px) for all button and link labels
+- **Default text color:** `text-text-primary` (`#2C2A28`) — not `text-text-display`
+- **Gold accent:** only for hover/active states (underlines, NavLink active color). Never for fills or backgrounds.
+- **Uppercase + tracking:** all labels use `font-body uppercase tracking-widest`
+
+### Components
+
+| Component | File | Variants / props |
+|---|---|---|
+| `Button` | `Button.astro` | `variant`: `arrow` (→), `download` (↓), `outlined` |
+| `InlineLink` | `InlineLink.astro` | Gold underline link, uses `<slot />` |
+| `ExternalLink` | `ExternalLink.astro` | Opens `target="_blank"`, diagonal arrow ↗ |
+| `NavLink` | `NavLink.astro` | `active` prop shows gold color + animated underline |
+
+**Button variants:**
+- `arrow` — dark text, border-bottom underline, arrow shifts right on hover
+- `download` — gold text, border-bottom underline, arrow shifts right on hover
+- `outlined` — border rectangle, no fill, hover darkens background subtly
+
+**NavLink hover:** underline animates left→right to `w-1/2` of the link text width on hover; `active` state shows it permanently.
+
 ## Astro + React boundary
 
 `.astro` components run server-side only (no browser JS by default). For interactivity, create `.tsx` React components and use a `client:*` directive when rendering them inside `.astro` files. Avoid adding React state or hooks inside `.astro` files.
