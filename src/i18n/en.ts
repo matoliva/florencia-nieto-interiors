@@ -1,4 +1,18 @@
 export default {
   'site.title': 'Florencia Nieto',
   'home.greeting': 'Hello world',
+  'showcase.title': 'Components',
+  'showcase.section.buttons': 'Buttons & Links',
+  'showcase.button.knowMore': 'Know More',
+  'showcase.button.downloadPortfolio': 'Download Portfolio',
+  'showcase.button.howItWorks': 'How It Works',
+  'showcase.inlineLink.prefix': 'Inline Link ·',
+  'showcase.inlineLink.label': 'Read The Studio Note',
+  'showcase.section.links': 'Links & Navigation',
+  'showcase.externalLink.instagram': 'Instagram',
+  'showcase.navLink.about': 'About',
+  'showcase.navLink.selectedProjects': 'Selected Projects',
+  'showcase.navLink.services': 'Services',
+  'showcase.navLink.shop': 'Shop',
+  'showcase.navLink.contact': 'Contact',
 } as const;

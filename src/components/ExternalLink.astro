@@ -1,0 +1,22 @@
+---
+interface Props {
+  label: string;
+  href: string;
+  class?: string;
+}
+
+const { label, href, class: className } = Astro.props;
+---
+
+<a
+  href={href}
+  target="_blank"
+  rel="noopener noreferrer"
+  class:list={[
+    'group inline-flex items-center gap-3 font-body uppercase tracking-widest text-sm text-text-primary cursor-pointer transition-colors duration-200 hover:text-text-secondary',
+    className,
+  ]}
+>
+  {label}
+  <span aria-hidden="true" class="transition-transform duration-200 group-hover:translate-x-1 group-hover:-translate-y-1">↗</span>
+</a>

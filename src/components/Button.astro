@@ -1,0 +1,29 @@
+---
+interface Props {
+  variant: 'arrow' | 'download' | 'outlined';
+  label: string;
+  href?: string;
+  class?: string;
+}
+
+const { variant, label, href, class: className } = Astro.props;
+
+const Tag = href ? 'a' : 'button';
+
+const base = 'font-body uppercase tracking-widest text-sm cursor-pointer transition-colors duration-200';
+
+const styles: Record<NonNullable<Props['variant']>, string> = {
+  arrow:    'group inline-flex items-center gap-3 text-text-primary border-b border-text-primary pb-1 hover:text-text-secondary',
+  download: 'group inline-flex items-center gap-3 text-accent-gold border-b border-accent-gold pb-1 hover:text-accent-gold-soft',
+  outlined: 'inline-flex items-center justify-center border border-border-default px-10 py-4 text-text-primary hover:bg-surface-secondary',
+};
+---
+
+<Tag
+  href={href}
+  class:list={[base, styles[variant], className]}
+>
+  {label}
+  {variant === 'arrow'    && <span aria-hidden="true" class="transition-transform duration-200 group-hover:translate-x-1">→</span>}
+  {variant === 'download' && <span aria-hidden="true" class="transition-transform duration-200 group-hover:translate-x-1">↓</span>}
+</Tag>
