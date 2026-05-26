@@ -6,13 +6,15 @@ import ExternalLink from '../components/ExternalLink.astro';
 import NavLink from '../components/NavLink.astro';
 import Heading from '../components/Heading.astro';
 import Body from '../components/Body.astro';
+import Section from '../components/Section.astro';
 import { useTranslations } from '../i18n/utils';
 
 const t = useTranslations(Astro.currentLocale);
 ---
 
 <Layout title={t('showcase.title')}>
-  <main class="min-h-screen bg-surface-primary px-8 py-16">
+  <main class="min-h-screen bg-surface-primary">
+  <Section>
     <div class="max-w-sm border border-border-default p-10">
 
       <h2 class="font-body uppercase tracking-widest text-xs text-text-display mb-3">
@@ -98,5 +100,6 @@ const t = useTranslations(Astro.currentLocale);
 
       </div>
     </div>
+  </Section>
   </main>
 </Layout>

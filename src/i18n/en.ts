@@ -3,6 +3,7 @@ export default {
   'home.greeting': 'Hello world',
   'home.hero.line1': 'Design that reflects you,',
   'home.hero.line2': 'created to suit your lifestyle',
+  'home.quote': 'I create thoughtful, layered spaces that reflect how you live, balancing aesthetics, functionality, and a strong sense of identity.',
   'showcase.title': 'Components',
   'showcase.section.buttons': 'Buttons & Links',
   'showcase.button.knowMore': 'Know More',
