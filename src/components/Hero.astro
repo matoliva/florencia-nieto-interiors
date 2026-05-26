@@ -1,0 +1,33 @@
+---
+import { Image } from 'astro:assets';
+import heroImg from '../assets/images/hero.jpg';
+import Heading from './Heading.astro';
+
+interface Props {
+  line1: string;
+  line2: string;
+}
+
+const { line1, line2 } = Astro.props;
+---
+
+<section class="hero-section relative overflow-hidden">
+  <Image
+    src={heroImg}
+    alt=""
+    class="absolute inset-0 w-full h-full object-cover"
+    loading="eager"
+    fetchpriority="high"
+  />
+
+  <div class="absolute inset-0 bg-gradient-to-r from-black/40 via-black/15 to-transparent"></div>
+
+  <div class="absolute inset-0 flex items-center">
+    <div class="pl-8 lg:pl-16 max-w-[85%] lg:max-w-[45%]">
+      <Heading variant="hero" class="!text-white">
+        <span class="block">{line1}</span>
+        <span class="block">{line2}</span>
+      </Heading>
+    </div>
+  </div>
+</section>

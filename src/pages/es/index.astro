@@ -1,9 +1,10 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
 import { useTranslations } from '../../i18n/utils';
 
 const t = useTranslations(Astro.currentLocale);
 ---
 <Layout>
-  <p>{t('home.greeting')}</p>
+  <Hero line1={t('home.hero.line1')} line2={t('home.hero.line2')} />
 </Layout>

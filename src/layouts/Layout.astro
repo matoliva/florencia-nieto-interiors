@@ -25,16 +25,26 @@ const lang = Astro.currentLocale ?? 'en';
 		<Font cssVariable="--font-avenir" />
 	</head>
 	<body>
-		<div class="hidden lg:block">
+		<div class="hidden md:block">
 			<Sidebar />
 		</div>
-		<div class="block lg:hidden">
+		<div class="block md:hidden">
 			<MobileHeader />
 		</div>
-		<main class="w-full lg:ml-60">
+		<main class="w-full md:ml-60">
 			<slot />
 		</main>
 	</body>
+	<script is:inline>
+		(function () {
+			function setHeaderHeight() {
+				var h = document.querySelector('header');
+				if (h) document.documentElement.style.setProperty('--mobile-header-h', h.offsetHeight + 'px');
+			}
+			setHeaderHeight();
+			window.addEventListener('resize', setHeaderHeight);
+		})();
+	</script>
 </html>
 
 <style>

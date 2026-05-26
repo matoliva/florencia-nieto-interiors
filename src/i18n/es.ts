@@ -1,6 +1,8 @@
 export default {
   'site.title': 'Florencia Nieto',
   'home.greeting': 'Hola mundo',
+  'home.hero.line1': 'Un diseño que te refleja,',
+  'home.hero.line2': 'creado para adaptarse a tu estilo de vida',
   'showcase.title': 'Componentes',
   'showcase.section.buttons': 'Botones y Links',
   'showcase.button.knowMore': 'Conocer Más',
