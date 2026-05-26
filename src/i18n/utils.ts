@@ -10,3 +10,9 @@ export function useTranslations(locale: string | undefined) {
   const lang: Locale = (locale as Locale) in translations ? (locale as Locale) : 'en';
   return (key: TranslationKey): string => translations[lang][key];
 }
+
+export function getActiveRouteChecker(pathname: string) {
+  const basePath = pathname.replace(/^\/(es)(\/|$)/, '/');
+  return (route: string) =>
+    route === '/' ? basePath === '/' : basePath.startsWith(route);
+}

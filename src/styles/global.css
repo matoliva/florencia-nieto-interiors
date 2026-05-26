@@ -35,6 +35,13 @@
   --font-size-editorial-h2-sm: 1.5rem;   /* 24px mobile  */
   --font-size-body:            1.125rem; /* 18px desktop */
   --font-size-body-sm:         1rem;     /* 16px mobile  */
+
+  /* Mobile menu */
+  --font-size-menu-nav:        0.9375rem; /* 15px */
+  --font-size-menu-footer:     0.6875rem; /* 11px */
+
+  /* Subtle border — texture panel separators */
+  --color-border-subtle: rgba(44, 42, 40, 0.08);
 }
 
 @layer base {
@@ -44,6 +51,22 @@
 }
 
 @layer components {
+  .texture-overlay::after,
+  .texture-overlay-strong::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .texture-overlay::after {
+    background: linear-gradient(180deg, rgba(248, 244, 237, 0.55), rgba(248, 244, 237, 0.78));
+  }
+
+  .texture-overlay-strong::after {
+    background: linear-gradient(180deg, rgba(248, 244, 237, 0.72), rgba(248, 244, 237, 0.90));
+  }
+
   .text-display-hero {
     font-family: var(--font-heading);
     font-size: var(--font-size-display-hero-sm);
