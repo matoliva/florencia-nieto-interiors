@@ -8,6 +8,7 @@ import Heading from '../components/Heading.astro';
 import Body from '../components/Body.astro';
 import Section from '../components/Section.astro';
 import FormInput from '../components/FormInput.astro';
+import FormTextarea from '../components/FormTextarea.astro';
 import { useTranslations } from '../i18n/utils';
 
 const t = useTranslations(Astro.currentLocale);
@@ -121,6 +122,13 @@ const t = useTranslations(Astro.currentLocale);
           name="email"
           type="email"
           placeholder="florencia@example.com"
+          required
+        />
+
+        <FormTextarea
+          label="Message"
+          name="message"
+          placeholder="Tell me about your project…"
           required
         />
 
