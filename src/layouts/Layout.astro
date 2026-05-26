@@ -1,6 +1,7 @@
 ---
 import { Font } from "astro:assets";
 import Sidebar from "../components/Sidebar.astro";
+import MobileHeader from "../components/MobileHeader.astro";
 import "../styles/global.css";
 
 const lang = Astro.currentLocale ?? 'en';
@@ -26,6 +27,9 @@ const lang = Astro.currentLocale ?? 'en';
 	<body>
 		<div class="hidden lg:block">
 			<Sidebar />
+		</div>
+		<div class="block lg:hidden">
+			<MobileHeader />
 		</div>
 		<main class="w-full lg:ml-60">
 			<slot />
