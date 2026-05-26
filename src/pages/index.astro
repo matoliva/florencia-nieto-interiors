@@ -3,13 +3,21 @@ import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import Quote from '../components/Quote.astro';
 import Section from '../components/Section.astro';
+import CuratedProjects from '../components/CuratedProjects.astro';
 import { useTranslations } from '../i18n/utils';
 
 const t = useTranslations(Astro.currentLocale);
 ---
 <Layout>
   <Hero line1={t('home.hero.line1')} line2={t('home.hero.line2')} />
-  <Section>
+  <Section noPaddingBottom>
     <Quote quote={t('home.quote')} />
   </Section>
+  <CuratedProjects
+    title={t('home.curatedProjects.title')}
+    seeAllLabel={t('home.curatedProjects.seeAll')}
+    seeAllHref={t('home.curatedProjects.seeAllHref')}
+    project1Name={t('home.curatedProjects.project1Name')}
+    project2Name={t('home.curatedProjects.project2Name')}
+  />
 </Layout>
