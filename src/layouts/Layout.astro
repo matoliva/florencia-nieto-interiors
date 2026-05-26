@@ -28,7 +28,7 @@ const lang = Astro.currentLocale ?? 'en';
 		<div class="hidden md:block shrink-0">
 			<Sidebar />
 		</div>
-		<div class="flex-1 min-w-0 flex flex-col overflow-y-auto">
+		<div class="flex-1 min-w-0 flex flex-col overflow-y-auto scroll-smooth">
 			<div class="sticky top-0 z-40 block md:hidden">
 				<MobileHeader />
 			</div>
@@ -58,5 +58,6 @@ const lang = Astro.currentLocale ?? 'en';
 	}
 	body {
 		overflow: hidden;
+		background-color: var(--color-surface-primary);
 	}
 </style>

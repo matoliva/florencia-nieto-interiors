@@ -11,6 +11,10 @@ const locale = Astro.currentLocale ?? 'en';
 const t = useTranslations(locale);
 const { pathname } = Astro.url;
 const isActive = getActiveRouteChecker(pathname);
+const buildHref = (route: string) => {
+  const [path, hash] = route.split('#');
+  return getRelativeLocaleUrl(locale, path || '/') + (hash ? `#${hash}` : '');
+};
 
 const texture = await getTextureImage(480);
 ---
@@ -26,7 +30,7 @@ const texture = await getTextureImage(480);
       {navLinks.map(({ key, route }) => (
         <NavLink
           label={t(key)}
-          href={getRelativeLocaleUrl(locale, route)}
+          href={buildHref(route)}
           active={isActive(route)}
         />
       ))}

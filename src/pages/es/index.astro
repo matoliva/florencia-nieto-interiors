@@ -4,6 +4,8 @@ import Hero from '../../components/Hero.astro';
 import Quote from '../../components/Quote.astro';
 import Section from '../../components/Section.astro';
 import CuratedProjects from '../../components/CuratedProjects.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import Divider from '../../components/Divider.astro';
 import { useTranslations } from '../../i18n/utils';
 
 const t = useTranslations(Astro.currentLocale);
@@ -13,6 +15,7 @@ const t = useTranslations(Astro.currentLocale);
   <Section noPaddingBottom>
     <Quote quote={t('home.quote')} />
   </Section>
+  <Divider />
   <CuratedProjects
     title={t('home.curatedProjects.title')}
     seeAllLabel={t('home.curatedProjects.seeAll')}
@@ -20,4 +23,6 @@ const t = useTranslations(Astro.currentLocale);
     project1Name={t('home.curatedProjects.project1Name')}
     project2Name={t('home.curatedProjects.project2Name')}
   />
+  <Divider />
+  <ContactSection />
 </Layout>
