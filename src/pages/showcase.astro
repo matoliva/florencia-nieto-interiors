@@ -9,6 +9,7 @@ import Body from '../components/Body.astro';
 import Section from '../components/Section.astro';
 import FormInput from '../components/FormInput.astro';
 import FormTextarea from '../components/FormTextarea.astro';
+import FormRadioGroup from '../components/FormRadioGroup.astro';
 import { useTranslations } from '../i18n/utils';
 
 const t = useTranslations(Astro.currentLocale);
@@ -129,6 +130,17 @@ const t = useTranslations(Astro.currentLocale);
           label="Message"
           name="message"
           placeholder="Tell me about your project…"
+          required
+        />
+
+        <FormRadioGroup
+          label="Project Type"
+          name="project_type"
+          options={[
+            { value: 'residential', label: 'Residential' },
+            { value: 'commercial', label: 'Commercial' },
+            { value: 'hospitality', label: 'Hospitality' },
+          ]}
           required
         />
 
