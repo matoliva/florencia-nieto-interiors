@@ -1,0 +1,8 @@
+---
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<hr class:list={['border-0 h-px bg-accent-gold-soft w-40 mx-auto', className]} />

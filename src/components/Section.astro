@@ -6,10 +6,11 @@ interface Props {
   title?: string;
   subtitle?: string;
   class?: string;
+  id?: string;
   noPaddingTop?: boolean;
   noPaddingBottom?: boolean;
 }
-const { title, subtitle, class: className, noPaddingTop, noPaddingBottom } = Astro.props;
+const { title, subtitle, class: className, id, noPaddingTop, noPaddingBottom } = Astro.props;
 
 const paddingY = noPaddingTop
   ? 'pb-16 md:pb-24'
@@ -17,7 +18,7 @@ const paddingY = noPaddingTop
     ? 'pt-16 md:pt-24'
     : 'py-16 md:py-24';
 ---
-<section class:list={['px-8 md:px-16 lg:px-24', paddingY, className]}>
+<section id={id} class:list={['px-8 md:px-16 lg:px-24', paddingY, className]}>
   {(title || subtitle) && (
     <div class="mb-10 md:mb-14">
       {title && <Heading variant="h2">{title}</Heading>}

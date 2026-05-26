@@ -1,0 +1,59 @@
+---
+import Section from './Section.astro';
+import FormInput from './FormInput.astro';
+import FormTextarea from './FormTextarea.astro';
+import FormRadioGroup from './FormRadioGroup.astro';
+import Button from './Button.astro';
+import { useTranslations } from '../i18n/utils';
+
+const t = useTranslations(Astro.currentLocale);
+
+const preferredContactOptions = [
+  { value: 'email', label: t('home.contact.preferredContact.email') },
+  { value: 'phone', label: t('home.contact.preferredContact.phone') },
+];
+
+const sourceOptions = [
+  { value: 'referral',  label: t('home.contact.source.referral') },
+  { value: 'google',    label: t('home.contact.source.google') },
+  { value: 'instagram', label: t('home.contact.source.instagram') },
+  { value: 'archipro',  label: t('home.contact.source.archipro') },
+  { value: 'linkedin',  label: t('home.contact.source.linkedin') },
+  { value: 'other',     label: t('home.contact.source.other') },
+];
+---
+
+<Section id="contact" title={t('home.contact.title')}>
+  <form method="post">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
+      <FormInput label={t('home.contact.firstName')} name="firstName" required />
+      <FormInput label={t('home.contact.lastName')}  name="lastName"  required />
+      <FormInput label={t('home.contact.email')}     name="email"     type="email" required />
+      <FormInput label={t('home.contact.phone')}     name="phone"     type="tel" />
+      <FormInput
+        label={t('home.contact.projectAddress')}
+        name="projectAddress"
+        class="md:col-span-2"
+      />
+      <FormTextarea
+        label={t('home.contact.message')}
+        name="message"
+        rows={3}
+        class="md:col-span-2"
+      />
+      <FormRadioGroup
+        label={t('home.contact.preferredContact')}
+        name="preferredContact"
+        options={preferredContactOptions}
+      />
+      <FormRadioGroup
+        label={t('home.contact.source')}
+        name="source"
+        options={sourceOptions}
+      />
+      <div class="md:col-span-2 flex justify-center pt-4">
+        <Button variant="arrow" label={t('home.contact.submit')} />
+      </div>
+    </div>
+  </form>
+</Section>
