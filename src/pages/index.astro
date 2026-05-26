@@ -1,10 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
+import Quote from '../components/Quote.astro';
+import Section from '../components/Section.astro';
 import { useTranslations } from '../i18n/utils';
 
 const t = useTranslations(Astro.currentLocale);
 ---
 <Layout>
   <Hero line1={t('home.hero.line1')} line2={t('home.hero.line2')} />
+  <Section>
+    <Quote quote={t('home.quote')} />
+  </Section>
 </Layout>

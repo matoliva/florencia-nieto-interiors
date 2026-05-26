@@ -3,6 +3,7 @@ export default {
   'home.greeting': 'Hola mundo',
   'home.hero.line1': 'Un diseño que te refleja,',
   'home.hero.line2': 'creado para adaptarse a tu estilo de vida',
+  'home.quote': 'Creo espacios reflexivos y con capas que reflejan cómo vivís, equilibrando estética, funcionalidad y una fuerte identidad.',
   'showcase.title': 'Componentes',
   'showcase.section.buttons': 'Botones y Links',
   'showcase.button.knowMore': 'Conocer Más',

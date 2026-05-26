@@ -1,0 +1,13 @@
+---
+import Heading from './Heading.astro';
+
+interface Props {
+  quote: string;
+  class?: string;
+}
+
+const { quote, class: className } = Astro.props;
+---
+<blockquote class:list={['border-l-2 border-accent-gold pl-8 md:pl-10', className]}>
+  <Heading variant="h2" as="p">{quote}</Heading>
+</blockquote>
