@@ -7,6 +7,7 @@ import NavLink from '../components/NavLink.astro';
 import Heading from '../components/Heading.astro';
 import Body from '../components/Body.astro';
 import Section from '../components/Section.astro';
+import FormInput from '../components/FormInput.astro';
 import { useTranslations } from '../i18n/utils';
 
 const t = useTranslations(Astro.currentLocale);
@@ -97,6 +98,31 @@ const t = useTranslations(Astro.currentLocale);
           <NavLink label={t('showcase.navLink.shop')} href="#" />
           <NavLink label={t('showcase.navLink.contact')} href="#" active />
         </div>
+
+      </div>
+    </div>
+    <div class="max-w-sm border border-border-default p-10 mt-8">
+
+      <h2 class="font-body uppercase tracking-widest text-xs text-text-display mb-3">
+        {t('showcase.section.formInputs')}
+      </h2>
+      <div class="border-t border-border-default mb-12"></div>
+
+      <div class="flex flex-col gap-10">
+
+        <FormInput
+          label="First Name"
+          name="first_name"
+          placeholder="Florencia"
+        />
+
+        <FormInput
+          label="Email"
+          name="email"
+          type="email"
+          placeholder="florencia@example.com"
+          required
+        />
 
       </div>
     </div>

@@ -18,6 +18,7 @@ export default {
   'showcase.inlineLink.label': 'Leer La Nota Del Estudio',
   'showcase.section.typography': 'Tipografía',
   'showcase.section.links': 'Links y Navegación',
+  'showcase.section.formInputs': 'Campos de Formulario',
   'showcase.externalLink.instagram': 'Instagram',
   'showcase.navLink.about': 'Sobre Mí',
   'showcase.navLink.selectedProjects': 'Proyectos Destacados',

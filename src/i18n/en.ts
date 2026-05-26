@@ -18,6 +18,7 @@ export default {
   'showcase.inlineLink.label': 'Read The Studio Note',
   'showcase.section.typography': 'Typography',
   'showcase.section.links': 'Links & Navigation',
+  'showcase.section.formInputs': 'Form Inputs',
   'showcase.externalLink.instagram': 'Instagram',
   'showcase.navLink.about': 'About',
   'showcase.navLink.selectedProjects': 'Selected Projects',

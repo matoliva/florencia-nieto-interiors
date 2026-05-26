@@ -1,0 +1,36 @@
+---
+interface Props {
+  label: string;
+  name: string;
+  id?: string;
+  type?: string;
+  placeholder?: string;
+  required?: boolean;
+  class?: string;
+}
+
+const { label, name, id, type, placeholder, required = false, class: className } = Astro.props;
+type P = Props;
+const inputId = (id ?? name) as P['id'];
+// Cast needed: Astro's JSX type for input.type doesn't accept plain `string`
+const inputType = (type ?? 'text') as 'text';
+---
+
+<div class:list={['flex flex-col gap-2 w-full', className]}>
+  <label
+    for={inputId}
+    class="font-body uppercase tracking-widest text-xs text-text-primary"
+  >
+    {label}{required && <span class="text-accent-gold ml-1">*</span>}
+  </label>
+  <input
+    id={inputId}
+    name={name}
+    type={inputType}
+    placeholder={placeholder}
+    required={required || undefined}
+    class="bg-transparent border-b border-border-default text-body text-text-primary
+           placeholder:text-border-default pb-3
+           focus:outline-none focus:border-text-primary transition-colors duration-200"
+  />
+</div>
