@@ -12,15 +12,18 @@ interface Props {
   project2Name: string;
   project1Cover: string;
   project2Cover: string;
+  project1Slug: string;
+  project2Slug: string;
   noPaddingTop?: boolean;
 }
 
-const { title, seeAllLabel, seeAllHref, project1Name, project2Name, project1Cover, project2Cover, noPaddingTop } = Astro.props;
+const { title, seeAllLabel, seeAllHref, project1Name, project2Name, project1Cover, project2Cover, project1Slug, project2Slug, noPaddingTop } = Astro.props;
+const base = Astro.currentLocale === 'es' ? '/es/projects' : '/projects';
 ---
 
 <Section title={title} noPaddingTop={noPaddingTop}>
   <div class="flex flex-col gap-4 md:flex-row md:h-[480px]">
-    <div class="relative flex-[3] h-56 md:h-full overflow-hidden group">
+    <a href={`${base}/${project1Slug}`} class="relative flex-[3] h-56 md:h-full overflow-hidden group">
       <img
         src={getOptimizedCloudinaryUrl(project1Cover, { width: 800 })}
         srcset={getCloudinarySrcSet(project1Cover, [400, 800])}
@@ -32,9 +35,9 @@ const { title, seeAllLabel, seeAllHref, project1Name, project2Name, project1Cove
       <div class="absolute inset-x-0 bottom-0 bg-black/40 px-5 py-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         <Body as="span" class="text-white">{project1Name}</Body>
       </div>
-    </div>
+    </a>
 
-    <div class="relative flex-[2] h-72 md:h-full overflow-hidden group">
+    <a href={`${base}/${project2Slug}`} class="relative flex-[2] h-72 md:h-full overflow-hidden group">
       <img
         src={getOptimizedCloudinaryUrl(project2Cover, { width: 600 })}
         srcset={getCloudinarySrcSet(project2Cover, [400, 600])}
@@ -46,7 +49,7 @@ const { title, seeAllLabel, seeAllHref, project1Name, project2Name, project1Cove
       <div class="absolute inset-x-0 bottom-0 bg-black/40 px-5 py-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         <Body as="span" class="text-white">{project2Name}</Body>
       </div>
-    </div>
+    </a>
   </div>
 
   <div class="mt-6 flex justify-end">
