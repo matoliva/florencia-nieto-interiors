@@ -1,0 +1,16 @@
+---
+import Heading from './Heading.astro';
+import Body from './Body.astro';
+
+interface Props {
+  title: string;
+  subtitle: string;
+}
+
+const { title, subtitle } = Astro.props;
+---
+
+<section class="px-8 md:px-16 lg:px-24 py-16 md:py-24">
+  <Heading variant="h1">{title}</Heading>
+  <Body class="mt-6 max-w-2xl">{subtitle}</Body>
+</section>

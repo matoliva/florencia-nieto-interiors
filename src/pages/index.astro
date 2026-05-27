@@ -7,8 +7,11 @@ import CuratedProjects from '../components/CuratedProjects.astro';
 import ContactSection from '../components/ContactSection.astro';
 import Divider from '../components/Divider.astro';
 import { useTranslations } from '../i18n/utils';
+import { projects } from '../data/projects';
 
 const t = useTranslations(Astro.currentLocale);
+const p1 = projects.find(p => p.slug === 'timeless-home')!;
+const p2 = projects.find(p => p.slug === 'bold-gathering')!;
 ---
 <Layout>
   <Hero line1={t('home.hero.line1')} line2={t('home.hero.line2')} />
@@ -22,6 +25,8 @@ const t = useTranslations(Astro.currentLocale);
     seeAllHref={t('home.curatedProjects.seeAllHref')}
     project1Name={t('home.curatedProjects.project1Name')}
     project2Name={t('home.curatedProjects.project2Name')}
+    project1Cover={p1.cover}
+    project2Cover={p2.cover}
   />
   <Divider />
   <ContactSection />

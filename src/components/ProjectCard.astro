@@ -1,0 +1,33 @@
+---
+import Body from './Body.astro';
+import { getOptimizedCloudinaryUrl, getCloudinarySrcSet } from '../utils/cloudinary';
+
+interface Props {
+  image: string;
+  name: string;
+  variant: 'landscape' | 'portrait';
+  eager?: boolean;
+}
+
+const { image, name, variant, eager = false } = Astro.props;
+
+const flexClass    = variant === 'landscape' ? 'flex-[3]' : 'flex-[2]';
+const mobileHeight = variant === 'landscape' ? 'h-48'     : 'h-28';
+
+const src    = getOptimizedCloudinaryUrl(image, { width: 800 });
+const srcset = getCloudinarySrcSet(image, [400, 800, 1200]);
+---
+
+<div class:list={['relative md:h-full overflow-hidden group', flexClass, mobileHeight]}>
+  <img
+    src={src}
+    srcset={srcset}
+    sizes="(max-width: 768px) 100vw, 800px"
+    alt={name}
+    loading={eager ? 'eager' : 'lazy'}
+    class="w-full h-full object-cover object-center"
+  />
+  <div class="absolute inset-x-0 bottom-0 bg-black/40 px-5 py-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+    <Body as="span" class="text-white">{name}</Body>
+  </div>
+</div>
