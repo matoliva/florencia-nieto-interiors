@@ -31,6 +31,7 @@ const Tag = href ? 'a' : 'div';
     sizes="(max-width: 768px) 100vw, 800px"
     alt={name}
     loading={eager ? 'eager' : 'lazy'}
+    decoding="async"
     class="w-full h-full object-cover object-center"
   />
   <div class="absolute inset-x-0 bottom-0 bg-black/40 px-5 py-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
