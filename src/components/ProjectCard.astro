@@ -7,18 +7,24 @@ interface Props {
   name: string;
   variant: 'landscape' | 'portrait';
   eager?: boolean;
+  href?: string;
 }
 
-const { image, name, variant, eager = false } = Astro.props;
+const { image, name, variant, eager = false, href } = Astro.props;
 
 const flexClass    = variant === 'landscape' ? 'flex-[3]' : 'flex-[2]';
 const mobileHeight = variant === 'landscape' ? 'h-48'     : 'h-28';
 
 const src    = getOptimizedCloudinaryUrl(image, { width: 800 });
 const srcset = getCloudinarySrcSet(image, [400, 800, 1200]);
+
+const Tag = href ? 'a' : 'div';
 ---
 
-<div class:list={['relative md:h-full overflow-hidden group', flexClass, mobileHeight]}>
+<Tag
+  href={href}
+  class:list={['relative md:h-full overflow-hidden group block', flexClass, mobileHeight]}
+>
   <img
     src={src}
     srcset={srcset}
@@ -30,4 +36,4 @@ const srcset = getCloudinarySrcSet(image, [400, 800, 1200]);
   <div class="absolute inset-x-0 bottom-0 bg-black/40 px-5 py-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
     <Body as="span" class="text-white">{name}</Body>
   </div>
-</div>
+</Tag>

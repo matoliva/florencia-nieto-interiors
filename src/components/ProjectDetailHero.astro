@@ -1,0 +1,44 @@
+---
+import Heading from './Heading.astro';
+import Body from './Body.astro';
+import { getOptimizedCloudinaryUrl, getCloudinarySrcSet } from '../utils/cloudinary';
+
+interface Props {
+  name: string;
+  description: string;
+  headerImage: string;
+}
+
+const { name, description, headerImage } = Astro.props;
+
+const src    = headerImage ? getOptimizedCloudinaryUrl(headerImage, { width: 600 }) : '';
+const srcset = headerImage ? getCloudinarySrcSet(headerImage, [300, 600, 900]) : '';
+---
+
+<section class="px-8 md:px-16 lg:px-24 py-16 md:py-24">
+  <div class:list={[
+    'flex flex-col gap-10',
+    headerImage ? 'md:flex-row md:items-center md:gap-16' : '',
+  ]}>
+    <div class:list={[headerImage ? 'md:flex-[3]' : 'w-full', 'flex flex-col gap-6']}>
+      <Heading variant="h1">{name}</Heading>
+      <Body>{description}</Body>
+    </div>
+
+    {headerImage && (
+      <div class="md:flex-[2] shrink-0">
+        <div class="overflow-hidden rounded-tl-[33%]">
+          <img
+            src={src}
+            srcset={srcset}
+            sizes="(max-width: 768px) 100vw, 400px"
+            alt={`${name} — interior design project`}
+            loading="eager"
+            decoding="async"
+            class="w-full h-full object-cover object-center aspect-[3/4]"
+          />
+        </div>
+      </div>
+    )}
+  </div>
+</section>
