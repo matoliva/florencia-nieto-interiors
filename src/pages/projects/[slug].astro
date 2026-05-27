@@ -1,0 +1,26 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ProjectDetailHero from '../../components/ProjectDetailHero.astro';
+import ProjectGallery from '../../components/ProjectGallery.astro';
+import Divider from '../../components/Divider.astro';
+import { projects } from '../../data/projects';
+
+export function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+---
+
+<Layout>
+  <ProjectDetailHero
+    name={project.name}
+    description={project.description}
+    headerImage={project.headerImage}
+  />
+  <Divider />
+  <ProjectGallery images={project.imageGallery} name={project.name} />
+</Layout>

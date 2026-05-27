@@ -1,29 +1,31 @@
 ---
-import type { Project } from '../data/projects';
-import { projects } from '../data/projects';
 import ProjectCard from './ProjectCard.astro';
 
-const rows: Project[][] = [];
-for (let i = 0; i < projects.length; i += 2) {
-  rows.push(projects.slice(i, i + 2));
+interface Props {
+  images: string[];
+  name: string;
 }
 
-const base = Astro.currentLocale === 'es' ? '/es/projects' : '/projects';
+const { images, name } = Astro.props;
+
+const rows: string[][] = [];
+for (let i = 0; i < images.length; i += 2) {
+  rows.push(images.slice(i, i + 2));
+}
 ---
 
 <div class="px-8 md:px-16 lg:px-24 py-16 md:py-24 flex flex-col gap-10">
   {rows.map((row, rowIndex) => (
     <div class="flex flex-col gap-10 md:flex-row md:h-[360px]">
-      {row.map((project, colIndex) => {
+      {row.map((src, colIndex) => {
         const variant = (rowIndex + colIndex) % 2 === 0 ? 'landscape' : 'portrait';
         const eager = rowIndex === 0;
         return (
           <ProjectCard
-            image={project.cover}
-            name={project.name}
+            image={src}
+            name={name}
             variant={variant}
             eager={eager}
-            href={`${base}/${project.slug}`}
           />
         );
       })}
