@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/Layout.astro';
+import AboutHero from '../components/AboutHero.astro';
+import AboutDescription from '../components/AboutDescription.astro';
+import Divider from '../components/Divider.astro';
+import { useTranslations } from '../i18n/utils';
+
+const t = useTranslations(Astro.currentLocale);
+---
+
+<Layout>
+  <AboutHero name={t('about.hero.name')} subtitle={t('about.hero.subtitle')} />
+  <Divider />
+  <AboutDescription
+    p1={t('about.description.p1')}
+    p2={t('about.description.p2')}
+    p3={t('about.description.p3')}
+    p4={t('about.description.p4')}
+    p5={t('about.description.p5')}
+  />
+</Layout>

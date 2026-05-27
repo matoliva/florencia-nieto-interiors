@@ -1,0 +1,29 @@
+---
+import { Image } from 'astro:assets';
+import Heading from './Heading.astro';
+import aboutImg from '../assets/images/about.webp';
+
+interface Props {
+  name: string;
+  subtitle: string;
+}
+
+const { name, subtitle } = Astro.props;
+---
+
+<section class="px-8 md:px-16 lg:px-24 py-16 md:py-24">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
+    <div class="text-center md:text-left">
+      <Heading variant="h1">{name}</Heading>
+      <p class="font-signature text-3xl text-text-primary mt-4">{subtitle}</p>
+    </div>
+    <div class="overflow-hidden rounded-t-[9999px]">
+      <Image
+        src={aboutImg}
+        alt={name}
+        class="w-full h-auto object-cover"
+        loading="eager"
+      />
+    </div>
+  </div>
+</section>
