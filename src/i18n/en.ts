@@ -50,6 +50,7 @@ export default {
   'about.description.p3': 'Before establishing her interior design practice, Florencia founded and led two creative businesses across design and events, developing a strong foundation in aesthetics, client experience, and project execution. This multidisciplinary background continues to inform her approach today, allowing her to design spaces that are both visually compelling and thoughtfully resolved.',
   'about.description.p4': 'Her work is characterised by a strong editorial eye, creating layered, curated interiors that feel personal, refined, and deeply livable.',
   'about.description.p5': 'Alongside her design practice, Florencia is also the co-founder of Linger Creative, a pottery and design brand focused on unique, handcrafted pieces that reflect her interest in materiality and tactile design.',
+  'about.quote': 'Design isn\'t about what\'s trending, it\'s about creating a space that feels like you',
   'nav.home':             'Home',
   'nav.about':            'About',
   'nav.projects':         'Selected Projects',
