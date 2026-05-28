@@ -3,7 +3,7 @@ export const navLinks = [
   { key: 'nav.about'    as const, route: '/about'    },
   { key: 'nav.projects' as const, route: '/projects' },
   { key: 'nav.contact'  as const, route: '/#contact'  },
-  { key: 'nav.services' as const, route: '/services' },
+  { key: 'nav.services' as const, route: '/#services' },
 ];
 
 export const socialLinks = [
