@@ -1,0 +1,26 @@
+---
+import Body from './Body.astro';
+
+interface Props {
+  title: string;
+  body: string;
+  suffix?: string;
+}
+
+const { title, body, suffix } = Astro.props;
+---
+
+<div class="bg-surface-tertiary border border-border-default p-6 md:p-8 lg:-rotate-1 lg:origin-top-right">
+  <!-- Pin -->
+  <div class="w-2.5 h-2.5 rounded-full bg-border-default mx-auto mb-6"></div>
+
+  <!-- Title -->
+  <p class="font-subheading text-text-display text-lg mb-4">{title}</p>
+
+  <!-- Body -->
+  <Body class="text-text-secondary text-base">{body}</Body>
+
+  {suffix && (
+    <p class="font-body italic text-text-tertiary text-sm mt-5 pt-5 border-t border-border-default">{suffix}</p>
+  )}
+</div>

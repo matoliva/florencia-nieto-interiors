@@ -10,31 +10,34 @@ interface Props {
   service1Numeral: string;
   service1Title: string;
   service1Description: string;
+  service1Href: string;
   service2Numeral: string;
   service2Title: string;
   service2Description: string;
+  service2Href: string;
   service3Numeral: string;
   service3Title: string;
   service3Description: string;
+  service3Href: string;
   knowMoreLabel: string;
 }
 
 const {
   title, subtitle,
-  service1Numeral, service1Title, service1Description,
-  service2Numeral, service2Title, service2Description,
-  service3Numeral, service3Title, service3Description,
+  service1Numeral, service1Title, service1Description, service1Href,
+  service2Numeral, service2Title, service2Description, service2Href,
+  service3Numeral, service3Title, service3Description, service3Href,
   knowMoreLabel,
 } = Astro.props;
 
 const services = [
-  { numeral: service1Numeral, title: service1Title, description: service1Description, href: '#contact' },
-  { numeral: service2Numeral, title: service2Title, description: service2Description, href: '#contact' },
-  { numeral: service3Numeral, title: service3Title, description: service3Description, href: '#contact' },
+  { numeral: service1Numeral, title: service1Title, description: service1Description, href: service1Href },
+  { numeral: service2Numeral, title: service2Title, description: service2Description, href: service2Href },
+  { numeral: service3Numeral, title: service3Title, description: service3Description, href: service3Href },
 ];
 ---
 
-<Section title={title} subtitle={subtitle}>
+<Section id="services" title={title} subtitle={subtitle}>
   <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-border-default">
     {services.map((service, i) => (
       <div class:list={[
