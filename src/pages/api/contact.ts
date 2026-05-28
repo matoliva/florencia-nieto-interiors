@@ -9,15 +9,43 @@ function escapeHtml(str: string): string {
     .replace(/"/g, '&quot;');
 }
 
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const LIMITS = {
+  firstName:      100,
+  lastName:       100,
+  email:          254,
+  phone:           30,
+  projectAddress: 200,
+  message:       2000,
+} as const;
+
 export const prerender = false;
 
 export const POST: APIRoute = async ({ request }) => {
-  const data = await request.json() as Record<string, string>;
+  const data = await request.json() as Record<string, unknown>;
 
-  const firstName = data.firstName?.trim()  ?? '';
-  const lastName  = data.lastName?.trim()   ?? '';
-  const email     = data.email?.trim()      ?? '';
-  const message   = data.message?.trim()    ?? '';
+  // Reject honeypot submissions (bots fill hidden fields)
+  if (data.website) {
+    return new Response(JSON.stringify({ error: 'Bad request' }), {
+      status: 400,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+
+  // Reject submissions faster than 3 seconds (bot timing)
+  const elapsed = Number(data.elapsed ?? 0);
+  if (elapsed < 3000) {
+    return new Response(JSON.stringify({ error: 'Bad request' }), {
+      status: 400,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+
+  const firstName = String(data.firstName ?? '').trim();
+  const lastName  = String(data.lastName  ?? '').trim();
+  const email     = String(data.email     ?? '').trim();
+  const message   = String(data.message   ?? '').trim();
 
   if (!firstName || !lastName || !email || !message) {
     return new Response(JSON.stringify({ error: 'Missing required fields' }), {
@@ -26,10 +54,39 @@ export const POST: APIRoute = async ({ request }) => {
     });
   }
 
-  const phone           = data.phone?.trim()           || '—';
-  const projectAddress  = data.projectAddress?.trim()  || '—';
-  const preferredContact = data.preferredContact       || '—';
-  const source          = data.source                  || '—';
+  if (!EMAIL_RE.test(email)) {
+    return new Response(JSON.stringify({ error: 'Invalid email' }), {
+      status: 400,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+
+  if (
+    firstName.length > LIMITS.firstName ||
+    lastName.length  > LIMITS.lastName  ||
+    email.length     > LIMITS.email     ||
+    message.length   > LIMITS.message
+  ) {
+    return new Response(JSON.stringify({ error: 'Input too long' }), {
+      status: 400,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+
+  const rawPhone   = String(data.phone          ?? '').trim();
+  const rawAddress = String(data.projectAddress ?? '').trim();
+
+  if (rawPhone.length > LIMITS.phone || rawAddress.length > LIMITS.projectAddress) {
+    return new Response(JSON.stringify({ error: 'Input too long' }), {
+      status: 400,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+
+  const phone           = rawPhone   || '—';
+  const projectAddress  = rawAddress || '—';
+  const preferredContact = String(data.preferredContact ?? '') || '—';
+  const source          = String(data.source          ?? '') || '—';
 
   const resend  = new Resend(import.meta.env.RESEND_API_KEY);
   const toEmail = import.meta.env.CONTACT_TO_EMAIL;

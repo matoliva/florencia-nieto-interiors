@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from 'react';
+import { useState, useRef, type FormEvent } from 'react';
 
 interface Translations {
   firstName: string;
@@ -33,6 +33,7 @@ type Status = 'idle' | 'submitting' | 'success' | 'error';
 export default function ContactForm({ translations: tr }: Props) {
   const [status, setStatus] = useState<Status>('idle');
   const [submitterName, setSubmitterName] = useState('');
+  const loadedAt = useRef(Date.now());
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -43,7 +44,10 @@ export default function ContactForm({ translations: tr }: Props) {
     const name = formData.get('firstName')?.toString() ?? '';
 
     try {
-      const payload = Object.fromEntries(formData.entries());
+      const payload = {
+        ...Object.fromEntries(formData.entries()),
+        elapsed: Date.now() - loadedAt.current,
+      };
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -87,44 +91,49 @@ export default function ContactForm({ translations: tr }: Props) {
 
   return (
     <form onSubmit={handleSubmit}>
+      {/* Honeypot: hidden from real users, bots fill it automatically */}
+      <div style={{ position: 'absolute', opacity: 0, pointerEvents: 'none', height: 0, overflow: 'hidden' }} aria-hidden="true">
+        <input name="website" type="text" tabIndex={-1} autoComplete="off" />
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
 
         <div className="flex flex-col gap-2 w-full">
           <label htmlFor="firstName" className="form-label">
             {tr.firstName}<span className="text-accent-gold ml-1">*</span>
           </label>
-          <input id="firstName" name="firstName" type="text" required className="form-field pb-3" />
+          <input id="firstName" name="firstName" type="text" required maxLength={100} className="form-field pb-3" />
         </div>
 
         <div className="flex flex-col gap-2 w-full">
           <label htmlFor="lastName" className="form-label">
             {tr.lastName}<span className="text-accent-gold ml-1">*</span>
           </label>
-          <input id="lastName" name="lastName" type="text" required className="form-field pb-3" />
+          <input id="lastName" name="lastName" type="text" required maxLength={100} className="form-field pb-3" />
         </div>
 
         <div className="flex flex-col gap-2 w-full">
           <label htmlFor="email" className="form-label">
             {tr.email}<span className="text-accent-gold ml-1">*</span>
           </label>
-          <input id="email" name="email" type="email" required className="form-field pb-3" />
+          <input id="email" name="email" type="email" required maxLength={254} className="form-field pb-3" />
         </div>
 
         <div className="flex flex-col gap-2 w-full">
           <label htmlFor="phone" className="form-label">{tr.phone}</label>
-          <input id="phone" name="phone" type="tel" className="form-field pb-3" />
+          <input id="phone" name="phone" type="tel" maxLength={30} className="form-field pb-3" />
         </div>
 
         <div className="flex flex-col gap-2 w-full md:col-span-2">
           <label htmlFor="projectAddress" className="form-label">{tr.projectAddress}</label>
-          <input id="projectAddress" name="projectAddress" type="text" className="form-field pb-3" />
+          <input id="projectAddress" name="projectAddress" type="text" maxLength={200} className="form-field pb-3" />
         </div>
 
         <div className="flex flex-col gap-2 w-full md:col-span-2">
           <label htmlFor="message" className="form-label">
             {tr.message}<span className="text-accent-gold ml-1">*</span>
           </label>
-          <textarea id="message" name="message" rows={3} required className="form-field py-3 resize-none" />
+          <textarea id="message" name="message" rows={3} required maxLength={2000} className="form-field py-3 resize-none" />
         </div>
 
         <fieldset className="flex flex-col gap-2 w-full border-0 p-0 m-0">
