@@ -4,6 +4,7 @@ import Hero from '../components/Hero.astro';
 import Quote from '../components/Quote.astro';
 import Section from '../components/Section.astro';
 import CuratedProjects from '../components/CuratedProjects.astro';
+import ServicesSection from '../components/ServicesSection.astro';
 import ContactSection from '../components/ContactSection.astro';
 import Divider from '../components/Divider.astro';
 import { useTranslations } from '../i18n/utils';
@@ -29,6 +30,21 @@ const p2 = projects.find(p => p.slug === 'bold-gathering')!;
     project2Cover={p2.cover}
     project1Slug={p1.slug}
     project2Slug={p2.slug}
+  />
+  <Divider />
+  <ServicesSection
+    title={t('home.services.title')}
+    subtitle={t('home.services.subtitle')}
+    service1Numeral={t('home.services.service1.numeral')}
+    service1Title={t('home.services.service1.title')}
+    service1Description={t('home.services.service1.description')}
+    service2Numeral={t('home.services.service2.numeral')}
+    service2Title={t('home.services.service2.title')}
+    service2Description={t('home.services.service2.description')}
+    service3Numeral={t('home.services.service3.numeral')}
+    service3Title={t('home.services.service3.title')}
+    service3Description={t('home.services.service3.description')}
+    knowMoreLabel={t('home.services.knowMore')}
   />
   <Divider />
   <ContactSection />
