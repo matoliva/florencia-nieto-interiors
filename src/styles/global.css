@@ -91,7 +91,7 @@
   }
 
   .text-editorial-h2 {
-    font-family: var(--font-subheading);
+    font-family: var(--font-heading);
     font-size: var(--font-size-editorial-h2-sm);
     line-height: 1.25;
     letter-spacing: 0em;
