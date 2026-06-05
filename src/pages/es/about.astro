@@ -5,6 +5,7 @@ import AboutDescription from '../../components/AboutDescription.astro';
 import Divider from '../../components/Divider.astro';
 import Section from '../../components/Section.astro';
 import Quote from '../../components/Quote.astro';
+import Button from '../../components/Button.astro';
 import { useTranslations } from '../../i18n/utils';
 
 const t = useTranslations(Astro.currentLocale);
@@ -23,5 +24,9 @@ const t = useTranslations(Astro.currentLocale);
   <Divider />
   <Section>
     <Quote quote={t('about.quote')} />
+  </Section>
+  <Divider />
+  <Section class="text-center">
+    <Button variant="outlined" label={t('services.cta.label')} href={t('services.cta.href')} />
   </Section>
 </Layout>
