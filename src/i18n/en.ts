@@ -37,7 +37,7 @@ export default {
   'showcase.navLink.services': 'Services',
   'showcase.navLink.shop': 'Shop',
   'showcase.navLink.contact': 'Contact',
-  'home.contact.title':                    'Begin the conversation',
+  'home.contact.title':                    'Let\'s shape your next space together',
   'home.contact.firstName':               'First Name',
   'home.contact.lastName':                'Last Name',
   'home.contact.email':                   'Email',
