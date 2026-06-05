@@ -10,12 +10,9 @@ interface Props {
 const { title, body, suffix } = Astro.props;
 ---
 
-<div class="bg-surface-tertiary border border-border-default p-6 md:p-8 lg:-rotate-1 lg:origin-top-right">
-  <!-- Pin -->
-  <div class="w-2.5 h-2.5 rounded-full bg-border-default mx-auto mb-6"></div>
-
+<div class="bg-surface-tertiary border border-border-default p-6 md:p-8">
   <!-- Title -->
-  <p class="font-subheading text-text-display text-lg mb-4">{title}</p>
+  <h2 class="font-subheading text-text-display text-2xl mb-4">{title}</h2>
 
   <!-- Body -->
   <Body class="text-text-secondary text-base">{body}</Body>
