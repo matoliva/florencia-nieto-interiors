@@ -40,13 +40,19 @@ const texture = await getTextureImage(768);
   const closeBtn = document.getElementById('mobile-menu-close');
   const menu = document.getElementById('mobile-menu');
 
+  function closeMenu() {
+    menu?.classList.add('hidden');
+    menu?.style.removeProperty('display');
+  }
+
   openBtn?.addEventListener('click', () => {
     menu?.classList.remove('hidden');
     menu?.style.setProperty('display', 'block');
   });
 
-  closeBtn?.addEventListener('click', () => {
-    menu?.classList.add('hidden');
-    menu?.style.removeProperty('display');
+  closeBtn?.addEventListener('click', closeMenu);
+
+  menu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', closeMenu);
   });
 </script>
