@@ -10,5 +10,5 @@ export const socialLinks = [
   { key: 'social.instagram' as const, href: 'https://www.instagram.com/florencianieto.interiors/' },
   { key: 'social.linkedin'  as const, href: 'https://www.linkedin.com/in/florencianieto/'        },
   { key: 'social.houzz'     as const, href: 'https://www.houzz.com/pro/florencianieto87'          },
-  { key: 'social.email'     as const, href: 'mailto:florencianieto.interiors@gmail.com'           },
+  { key: 'social.email'     as const, href: 'mailto:hello@florencianieto.com'           },
 ];
