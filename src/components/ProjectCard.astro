@@ -23,7 +23,7 @@ const Tag = href ? 'a' : 'div';
 
 <Tag
   href={href}
-  class:list={['relative md:h-full overflow-hidden group block', flexClass, mobileHeight]}
+  class:list={['relative md:h-full overflow-hidden block', href && 'group', flexClass, mobileHeight]}
 >
   <img
     src={src}
@@ -34,7 +34,9 @@ const Tag = href ? 'a' : 'div';
     decoding="async"
     class="w-full h-full object-cover object-center"
   />
-  <div class="absolute inset-x-0 bottom-0 bg-black/40 px-5 py-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-    <Body as="span" class="text-white">{name}</Body>
-  </div>
+  {href && (
+    <div class="absolute inset-x-0 bottom-0 bg-black/40 px-5 py-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+      <Body as="span" class="text-white">{name}</Body>
+    </div>
+  )}
 </Tag>
