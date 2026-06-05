@@ -36,7 +36,7 @@ const texture = await getTextureImage(480);
       ))}
     </nav>
 
-    <div class="mt-auto pt-10 border-t border-border-subtle flex flex-col gap-5">
+    <div class="sidebar-social mt-auto pt-10 border-t border-border-subtle flex flex-col gap-5">
       {socialLinks.map(({ key, href }) => (
         <ExternalLink label={t(key)} href={href} />
       ))}
@@ -47,5 +47,9 @@ const texture = await getTextureImage(480);
 <style>
   aside {
     border-right: 1px solid var(--color-border-subtle);
+  }
+
+  :global(.sidebar-social a) {
+    font-size: 0.75rem; /* 12px */
   }
 </style>
