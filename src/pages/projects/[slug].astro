@@ -5,6 +5,8 @@ import ProjectGallery from '../../components/ProjectGallery.astro';
 import Divider from '../../components/Divider.astro';
 import { projects } from '../../data/projects';
 
+export const prerender = true;
+
 export function getStaticPaths() {
   return projects.map((project) => ({
     params: { slug: project.slug },
