@@ -193,6 +193,7 @@ for (let i = 0; i < images.length; i += 2) {
     private prevBtn: HTMLElement;
     private nextBtn: HTMLElement;
     private currentIndex = 0;
+    private isOpen = false;
 
     constructor(container: HTMLElement) {
       this.buttons = Array.from(
@@ -254,14 +255,21 @@ for (let i = 0; i < images.length; i += 2) {
       Gallery.activeGallery = this;
       Gallery.lockScroll();
       this.overlay.style.display = 'flex';
+      this.isOpen = true;
       this.showImage(index);
+      history.pushState({ lightbox: true }, '');
     }
 
     private close() {
+      if (!this.isOpen) return;
       this.overlay.style.display = 'none';
+      this.isOpen = false;
       if (Gallery.activeGallery === this) {
         Gallery.activeGallery = null;
         Gallery.unlockScroll();
+      }
+      if (history.state?.lightbox) {
+        history.back();
       }
     }
 
@@ -313,6 +321,10 @@ for (let i = 0; i < images.length; i += 2) {
 
       this.overlay.addEventListener('click', (e) => {
         if (e.target === this.overlay) this.close();
+      });
+
+      window.addEventListener('popstate', () => {
+        if (this.isOpen) this.close();
       });
     }
   }
