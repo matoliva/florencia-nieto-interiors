@@ -13,10 +13,10 @@ interface Props {
 const { title, subtitle, class: className, id, noPaddingTop, noPaddingBottom } = Astro.props;
 
 const paddingY = noPaddingTop
-  ? 'pb-16 md:pb-24'
+  ? 'pb-14 md:pb-20'
   : noPaddingBottom
-    ? 'pt-16 md:pt-24'
-    : 'py-16 md:py-24';
+    ? 'pt-14 md:pt-20'
+    : 'py-14 md:py-20';
 ---
 <section id={id} class:list={['px-8 md:px-16 lg:px-24', paddingY, className]}>
   {(title || subtitle) && (
