@@ -45,6 +45,26 @@ const lang = Astro.currentLocale ?? 'en';
 			}
 			setHeaderHeight();
 			window.addEventListener('resize', setHeaderHeight);
+
+			// The scrollable container is #page-scroll (body is overflow:hidden),
+			// so the browser cannot save or restore scroll position correctly.
+			// We take over entirely.
+			if ('scrollRestoration' in history) {
+				history.scrollRestoration = 'manual';
+			}
+
+			function scrollToHash() {
+				var hash = window.location.hash;
+				if (!hash) return;
+				var el = document.querySelector(hash);
+				if (el) el.scrollIntoView({ behavior: 'smooth' });
+			}
+
+			// Same-page hash changes (back/forward within the same page)
+			window.addEventListener('popstate', scrollToHash);
+
+			// Full page loads and bfcache restores (covers browser back from another page)
+			window.addEventListener('pageshow', scrollToHash);
 		})();
 	</script>
 </html>
