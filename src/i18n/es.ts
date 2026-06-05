@@ -64,7 +64,7 @@ export default {
   'home.contact.error.email':            'El email es requerido',
   'home.contact.error.emailInvalid':     'Por favor ingresá un email válido',
   'home.contact.info.description':      'O contáctame directamente',
-  'home.contact.info.phoneValue':       '+64 XX XXX XXXX',
+  'home.contact.info.phoneValue':       '+64 274 294 273',
   'home.contact.info.follow':           'Seguime en',
   'about.hero.name':     'Florencia Nieto',
   'about.hero.subtitle': 'Diseñadora de Interiores',

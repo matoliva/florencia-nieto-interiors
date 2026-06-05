@@ -213,7 +213,7 @@ export default function ContactForm({ translations: tr }: Props) {
             {preferredContactOptions.map((opt) => (
               <label key={opt.value} className="flex items-center gap-3 cursor-pointer">
                 <input type="radio" name="preferredContact" value={opt.value} className="radio-field" />
-                <span className="text-body text-text-primary">{opt.label}</span>
+                <span className="text-sm text-text-primary">{opt.label}</span>
               </label>
             ))}
           </div>
@@ -225,7 +225,7 @@ export default function ContactForm({ translations: tr }: Props) {
             {sourceOptions.map((opt) => (
               <label key={opt.value} className="flex items-center gap-3 cursor-pointer">
                 <input type="radio" name="source" value={opt.value} className="radio-field" />
-                <span className="text-body text-text-primary">{opt.label}</span>
+                <span className="text-sm text-text-primary">{opt.label}</span>
               </label>
             ))}
           </div>
