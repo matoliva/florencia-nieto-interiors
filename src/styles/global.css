@@ -71,7 +71,7 @@
   }
 
   .text-display-hero {
-    font-family: var(--font-heading);
+    font-family: var(--font-subheading);
     font-size: var(--font-size-display-hero-sm);
     line-height: 1.05;
     letter-spacing: -0.02em;
