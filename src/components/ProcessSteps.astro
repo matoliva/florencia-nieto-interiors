@@ -16,7 +16,7 @@ const { steps } = Astro.props;
         {String(i + 1).padStart(2, '0')}
       </p>
       <div class="flex-1">
-        <Heading variant="h2" as="h3" class="mb-4">{step.title}</Heading>
+        <Heading variant="h2" as="h3" class="mb-4 font-subheading">{step.title}</Heading>
         <Body class="text-text-secondary">{step.desc}</Body>
       </div>
     </div>

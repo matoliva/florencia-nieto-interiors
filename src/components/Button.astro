@@ -24,6 +24,6 @@ const styles: Record<NonNullable<Props['variant']>, string> = {
   class:list={[base, styles[variant], className]}
 >
   {label}
-  {variant === 'arrow'    && <span aria-hidden="true" class="transition-transform duration-200 group-hover:translate-x-1">→</span>}
-  {variant === 'download' && <span aria-hidden="true" class="transition-transform duration-200 group-hover:translate-x-1">↓</span>}
+  {variant === 'arrow'    && <span aria-hidden="true" class="transition-transform duration-200 group-hover:translate-x-1">→&#xFE0E;</span>}
+  {variant === 'download' && <span aria-hidden="true" class="transition-transform duration-200 group-hover:translate-x-1">↓&#xFE0E;</span>}
 </Tag>

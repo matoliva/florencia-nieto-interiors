@@ -24,17 +24,19 @@ const lang = Astro.currentLocale ?? 'en';
 		<Font cssVariable="--font-castorgate" />
 		<Font cssVariable="--font-avenir" />
 	</head>
-	<body class="flex">
-		<div class="hidden md:block shrink-0">
-			<Sidebar />
-		</div>
-		<div id="page-scroll" class="flex-1 min-w-0 flex flex-col overflow-y-auto scroll-smooth">
-			<div class="sticky top-0 z-40 block md:hidden">
-				<MobileHeader />
+	<body>
+		<div class="flex max-w-[1600px] mx-auto h-full">
+			<div class="hidden md:block shrink-0">
+				<Sidebar />
 			</div>
-			<main class="pb-16 md:pb-24">
-				<slot />
-			</main>
+			<div id="page-scroll" class="flex-1 min-w-0 flex flex-col overflow-y-auto scroll-smooth">
+				<div class="sticky top-0 z-40 block md:hidden">
+					<MobileHeader />
+				</div>
+				<main class="pb-16 md:pb-24">
+					<slot />
+				</main>
+			</div>
 		</div>
 	</body>
 	<script is:inline>
@@ -79,6 +81,7 @@ const lang = Astro.currentLocale ?? 'en';
 	body {
 		overflow: hidden;
 		background-color: var(--color-surface-primary);
+		font-variant-emoji: text;
 	}
 	@media (max-width: 767px) {
 		#page-scroll {
