@@ -15,6 +15,8 @@ const { line1, line2 } = Astro.props;
   <Image
     src={heroImg}
     alt=""
+    widths={[768, 1280, 1535]}
+    sizes="100vw"
     class="absolute inset-0 w-full h-full object-cover"
     loading="eager"
     fetchpriority="high"
