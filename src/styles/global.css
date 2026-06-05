@@ -70,11 +70,15 @@
     background: linear-gradient(180deg, rgba(248, 244, 237, 0.72), rgba(248, 244, 237, 0.90));
   }
 
+  .font-subheading {
+    letter-spacing: 2px;
+  }
+
   .text-display-hero {
     font-family: var(--font-subheading);
     font-size: var(--font-size-display-hero-sm);
     line-height: 1.05;
-    letter-spacing: -0.02em;
+    letter-spacing: 2px;
   }
   @media (min-width: 768px) {
     .text-display-hero { font-size: var(--font-size-display-hero); }
@@ -94,7 +98,6 @@
     font-family: var(--font-heading);
     font-size: var(--font-size-editorial-h2-sm);
     line-height: 1.25;
-    letter-spacing: 0em;
   }
   @media (min-width: 768px) {
     .text-editorial-h2 { font-size: var(--font-size-editorial-h2); }
