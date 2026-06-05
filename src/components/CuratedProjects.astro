@@ -1,0 +1,58 @@
+---
+import Section from './Section.astro';
+import Body from './Body.astro';
+import Button from './Button.astro';
+import { getOptimizedCloudinaryUrl, getCloudinarySrcSet } from '../utils/cloudinary';
+
+interface Props {
+  title: string;
+  seeAllLabel: string;
+  seeAllHref: string;
+  project1Name: string;
+  project2Name: string;
+  project1Cover: string;
+  project2Cover: string;
+  project1Slug: string;
+  project2Slug: string;
+  noPaddingTop?: boolean;
+}
+
+const { title, seeAllLabel, seeAllHref, project1Name, project2Name, project1Cover, project2Cover, project1Slug, project2Slug, noPaddingTop } = Astro.props;
+const base = Astro.currentLocale === 'es' ? '/es/projects' : '/projects';
+---
+
+<Section title={title} noPaddingTop={noPaddingTop}>
+  <div class="flex flex-col gap-4 md:flex-row md:h-[480px]">
+    <a href={`${base}/${project1Slug}`} class="relative flex-[3] h-56 md:h-full overflow-hidden group">
+      <img
+        src={getOptimizedCloudinaryUrl(project1Cover, { width: 800 })}
+        srcset={getCloudinarySrcSet(project1Cover, [400, 800, 1600])}
+        sizes="(max-width: 768px) 100vw, 60vw"
+        alt={project1Name}
+        loading="eager"
+        class="w-full h-full object-cover object-center"
+      />
+      <div class="absolute inset-x-0 bottom-0 bg-black/40 px-5 py-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <Body as="span" class="text-white">{project1Name}</Body>
+      </div>
+    </a>
+
+    <a href={`${base}/${project2Slug}`} class="relative flex-[2] h-72 md:h-full overflow-hidden group">
+      <img
+        src={getOptimizedCloudinaryUrl(project2Cover, { width: 600 })}
+        srcset={getCloudinarySrcSet(project2Cover, [400, 600, 1200])}
+        sizes="(max-width: 768px) 100vw, 40vw"
+        alt={project2Name}
+        loading="eager"
+        class="w-full h-full object-cover object-center"
+      />
+      <div class="absolute inset-x-0 bottom-0 bg-black/40 px-5 py-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <Body as="span" class="text-white">{project2Name}</Body>
+      </div>
+    </a>
+  </div>
+
+  <div class="mt-6 flex justify-end">
+    <Button variant="arrow" label={seeAllLabel} href={seeAllHref} />
+  </div>
+</Section>

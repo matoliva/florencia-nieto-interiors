@@ -1,0 +1,36 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import ProjectDetailHero from '../../../components/ProjectDetailHero.astro';
+import ProjectGallery from '../../../components/ProjectGallery.astro';
+import Divider from '../../../components/Divider.astro';
+import Section from '../../../components/Section.astro';
+import Button from '../../../components/Button.astro';
+import { projects } from '../../../data/projects';
+import { useTranslations } from '../../../i18n/utils';
+
+export const prerender = true;
+
+export function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const t = useTranslations(Astro.currentLocale);
+---
+
+<Layout>
+  <ProjectDetailHero
+    name={project.name}
+    description={project.description}
+    headerImage={project.headerImage}
+  />
+  <Divider />
+  <ProjectGallery images={project.imageGallery} name={project.name} />
+  <Divider />
+  <Section class="text-center">
+    <Button variant="outlined" label={t('services.cta.label')} href={t('services.cta.href')} />
+  </Section>
+</Layout>

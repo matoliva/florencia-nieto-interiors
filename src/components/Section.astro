@@ -1,0 +1,29 @@
+---
+import Heading from './Heading.astro';
+import Body from './Body.astro';
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  class?: string;
+  id?: string;
+  noPaddingTop?: boolean;
+  noPaddingBottom?: boolean;
+}
+const { title, subtitle, class: className, id, noPaddingTop, noPaddingBottom } = Astro.props;
+
+const paddingY = noPaddingTop
+  ? 'pb-14 md:pb-20'
+  : noPaddingBottom
+    ? 'pt-14 md:pt-20'
+    : 'py-14 md:py-20';
+---
+<section id={id} class:list={['px-8 md:px-16 lg:px-24', paddingY, className]}>
+  {(title || subtitle) && (
+    <div class="mb-10 md:mb-14">
+      {title && <Heading variant="h2">{title}</Heading>}
+      {subtitle && <Body class="mt-3">{subtitle}</Body>}
+    </div>
+  )}
+  <slot />
+</section>

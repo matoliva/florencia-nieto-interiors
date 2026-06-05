@@ -1,0 +1,23 @@
+---
+import Body from './Body.astro';
+
+interface Props {
+  title: string;
+  body: string;
+  suffix?: string;
+}
+
+const { title, body, suffix } = Astro.props;
+---
+
+<div class="bg-surface-tertiary border border-border-default p-6 md:p-8">
+  <!-- Title -->
+  <h2 class="font-subheading text-text-display text-2xl mb-4">{title}</h2>
+
+  <!-- Body -->
+  <Body class="text-text-secondary text-base">{body}</Body>
+
+  {suffix && (
+    <p class="font-body italic text-text-tertiary text-sm mt-5 pt-5 border-t border-border-default">{suffix}</p>
+  )}
+</div>

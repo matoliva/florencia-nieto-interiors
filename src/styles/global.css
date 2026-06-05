@@ -1,0 +1,170 @@
+@import "tailwindcss";
+
+@theme {
+  /* Surfaces */
+  --color-surface-primary:   #F8F4ED;
+  --color-surface-secondary: #F2EBE0;
+  --color-surface-tertiary:  #E8DFD0;
+  --color-surface-subtle:    #DBD2C2;
+
+  /* Borders */
+  --color-border-default: #C8BFB1;
+
+  /* Text */
+  --color-text-tertiary:  #9A938A;
+  --color-text-secondary: #5B5651;
+  --color-text-primary:   #2C2A28;
+  --color-text-display:   #1A1816;
+
+  /* Accent — editorial use only */
+  --color-accent-gold:      #B89456;
+  --color-accent-gold-soft: #C9A86A;
+
+  /* Feedback */
+  --color-feedback-error: #B05C52;
+
+  /* Typography — families */
+  --font-signature:  var(--font-andarilho);
+  --font-heading:    var(--font-leelawadee);
+  --font-subheading: var(--font-castorgate);
+  --font-body:       var(--font-avenir);
+
+  /* Typography — type scale */
+  --font-size-display-hero:    4.5rem;   /* 72px desktop */
+  --font-size-display-hero-sm: 2.5rem;   /* 40px mobile  */
+  --font-size-display-h1:      3.25rem;  /* 52px desktop */
+  --font-size-display-h1-sm:   2rem;     /* 32px mobile  */
+  --font-size-editorial-h2:    2rem;     /* 32px desktop */
+  --font-size-editorial-h2-sm: 1.5rem;   /* 24px mobile  */
+  --font-size-body:            1.125rem; /* 18px desktop */
+  --font-size-body-sm:         1rem;     /* 16px mobile  */
+
+  /* Mobile menu */
+  --font-size-menu-nav:        0.9375rem; /* 15px */
+  --font-size-menu-footer:     0.6875rem; /* 11px */
+
+  /* Subtle border — texture panel separators */
+  --color-border-subtle: rgba(44, 42, 40, 0.08);
+}
+
+@layer base {
+  body {
+    font-family: var(--font-body);
+  }
+}
+
+@layer components {
+  .texture-overlay::after,
+  .texture-overlay-strong::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .texture-overlay::after {
+    background: linear-gradient(180deg, rgba(248, 244, 237, 0.55), rgba(248, 244, 237, 0.78));
+  }
+
+  .texture-overlay-strong::after {
+    background: linear-gradient(180deg, rgba(248, 244, 237, 0.72), rgba(248, 244, 237, 0.90));
+  }
+
+  .text-display-hero {
+    font-family: var(--font-subheading);
+    font-size: var(--font-size-display-hero-sm);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+  @media (min-width: 768px) {
+    .text-display-hero { font-size: var(--font-size-display-hero); }
+  }
+
+  .text-display-h1 {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-display-h1-sm);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+  }
+  @media (min-width: 768px) {
+    .text-display-h1 { font-size: var(--font-size-display-h1); }
+  }
+
+  .text-editorial-h2 {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-editorial-h2-sm);
+    line-height: 1.25;
+    letter-spacing: 0em;
+  }
+  @media (min-width: 768px) {
+    .text-editorial-h2 { font-size: var(--font-size-editorial-h2); }
+  }
+
+  .text-body {
+    font-family: var(--font-body);
+    font-size: var(--font-size-body-sm);
+    line-height: 1.65;
+    letter-spacing: 0em;
+  }
+  @media (min-width: 768px) {
+    .text-body { font-size: var(--font-size-body); }
+  }
+
+  .hero-section {
+    height: calc(100dvh - var(--mobile-header-h, 64px));
+  }
+  @media (min-width: 768px) {
+    .hero-section { height: 100dvh; }
+  }
+
+  .form-label {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-primary);
+  }
+
+  .form-field {
+    background: transparent;
+    border-bottom: 1px solid var(--color-border-default);
+    font-family: var(--font-body);
+    font-size: var(--font-size-body-sm);
+    color: var(--color-text-primary);
+    transition: border-color 200ms;
+  }
+  .form-field::placeholder {
+    color: var(--color-border-default);
+  }
+  .form-field:focus {
+    outline: none;
+    border-color: var(--color-text-primary);
+  }
+  .form-field-error {
+    border-color: var(--color-feedback-error);
+  }
+  @media (min-width: 768px) {
+    .form-field { font-size: var(--font-size-body); }
+  }
+
+  .radio-field {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 1rem;
+    height: 1rem;
+    border: 1px solid var(--color-border-default);
+    border-radius: 50%;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: border-color 200ms;
+  }
+  .radio-field:checked {
+    border-color: var(--color-text-tertiary);
+    background-color: var(--color-text-tertiary);
+    box-shadow: inset 0 0 0 3px var(--color-surface-primary);
+  }
+  .radio-field:focus {
+    outline: none;
+    border-color: var(--color-text-tertiary);
+  }
+}

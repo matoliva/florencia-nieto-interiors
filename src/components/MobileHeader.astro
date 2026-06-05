@@ -1,0 +1,58 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import MobileMenu from './MobileMenu.astro';
+import Logo from './Logo.astro';
+import { getTextureImage, textureStyle } from '../utils/texture';
+
+const locale = Astro.currentLocale ?? 'en';
+const texture = await getTextureImage(768);
+---
+
+<header
+  style={textureStyle(texture.src)}
+  class="texture-overlay relative flex items-center justify-between px-6 py-4"
+>
+  <Logo locale={locale} width={160} />
+
+  <button id="mobile-menu-open" type="button" aria-label="Open menu" class="relative z-10 flex flex-col gap-[7px] p-1">
+    <span class="block w-6 h-[1.5px] bg-text-primary"></span>
+    <span class="block w-6 h-[1.5px] bg-text-primary"></span>
+    <span class="block w-6 h-[1.5px] bg-text-primary"></span>
+  </button>
+</header>
+
+<MobileMenu />
+
+<style>
+  header {
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  /* Logo link needs to sit above the ::after overlay */
+  header :global(a) {
+    position: relative;
+    z-index: 1;
+  }
+</style>
+
+<script>
+  const openBtn = document.getElementById('mobile-menu-open');
+  const closeBtn = document.getElementById('mobile-menu-close');
+  const menu = document.getElementById('mobile-menu');
+
+  function closeMenu() {
+    menu?.classList.add('hidden');
+    menu?.style.removeProperty('display');
+  }
+
+  openBtn?.addEventListener('click', () => {
+    menu?.classList.remove('hidden');
+    menu?.style.setProperty('display', 'block');
+  });
+
+  closeBtn?.addEventListener('click', closeMenu);
+
+  menu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', closeMenu);
+  });
+</script>

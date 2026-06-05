@@ -1,0 +1,24 @@
+---
+import { Image } from 'astro:assets';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import logoImg from '../assets/images/florenciaNietoLogo.png';
+
+interface Props {
+  locale: string;
+  width?: number;
+  class?: string;
+}
+
+const { locale, width = 200, class: className } = Astro.props;
+---
+
+<a href={getRelativeLocaleUrl(locale, '/')} class="block">
+  <Image
+    src={logoImg}
+    alt="Florencia Nieto"
+    width={width}
+    densities={[1, 2]}
+    quality={100}
+    class:list={['h-auto', className]}
+  />
+</a>

@@ -1,0 +1,38 @@
+---
+interface Option {
+  value: string;
+  label: string;
+}
+
+interface Props {
+  label?: string;
+  name: string;
+  options: Option[];
+  required?: boolean;
+  class?: string;
+}
+
+const { label, name, options, required = false, class: className } = Astro.props;
+---
+
+<fieldset class:list={['flex flex-col gap-2 w-full border-0 p-0 m-0', className]}>
+  {label && (
+    <legend class="form-label mb-4">
+      {label}{required && <span class="text-accent-gold ml-1">*</span>}
+    </legend>
+  )}
+  <div class="flex flex-col gap-4">
+    {options.map((opt) => (
+      <label class="flex items-center gap-3 cursor-pointer">
+        <input
+          type="radio"
+          name={name}
+          value={opt.value}
+          required={required || undefined}
+          class="radio-field"
+        />
+        <span class="text-body text-text-primary">{opt.label}</span>
+      </label>
+    ))}
+  </div>
+</fieldset>

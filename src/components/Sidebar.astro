@@ -1,0 +1,55 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { useTranslations, getActiveRouteChecker } from '../i18n/utils';
+import NavLink from './NavLink.astro';
+import ExternalLink from './ExternalLink.astro';
+import Logo from './Logo.astro';
+import { getTextureImage, textureStyle } from '../utils/texture';
+import { navLinks, socialLinks } from '../config/nav';
+
+const locale = Astro.currentLocale ?? 'en';
+const t = useTranslations(locale);
+const { pathname } = Astro.url;
+const isActive = getActiveRouteChecker(pathname);
+const buildHref = (route: string) => {
+  const [path, hash] = route.split('#');
+  return getRelativeLocaleUrl(locale, path || '/') + (hash ? `#${hash}` : '');
+};
+
+const texture = await getTextureImage(480);
+---
+
+<aside
+  style={textureStyle(texture.src, 'top left')}
+  class="texture-overlay relative h-screen w-60 overflow-hidden"
+>
+  <div class="flex flex-col h-full pt-[48px] px-8 pb-8 relative z-10">
+    <Logo locale={locale} width={200} class="w-50" />
+
+    <nav class="mt-10 flex flex-col gap-[22px]" aria-label="Main navigation">
+      {navLinks.map(({ key, route }) => (
+        <NavLink
+          label={t(key)}
+          href={buildHref(route)}
+          active={isActive(route)}
+        />
+      ))}
+    </nav>
+
+    <div class="sidebar-social mt-auto pt-10 border-t border-border-subtle flex flex-col gap-5">
+      {socialLinks.map(({ key, href }) => (
+        <ExternalLink label={t(key)} href={href} />
+      ))}
+    </div>
+  </div>
+</aside>
+
+<style>
+  aside {
+    border-right: 1px solid var(--color-border-subtle);
+  }
+
+  :global(.sidebar-social a) {
+    font-size: 0.75rem; /* 12px */
+  }
+</style>

@@ -1,0 +1,21 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ProjectsHero from '../../components/ProjectsHero.astro';
+import ProjectsGrid from '../../components/ProjectsGrid.astro';
+import Divider from '../../components/Divider.astro';
+import Section from '../../components/Section.astro';
+import Button from '../../components/Button.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const t = useTranslations(Astro.currentLocale);
+---
+
+<Layout>
+  <ProjectsHero title={t('projects.hero.title')} subtitle={t('projects.hero.subtitle')} />
+  <Divider />
+  <ProjectsGrid />
+  <Divider />
+  <Section class="text-center">
+    <Button variant="outlined" label={t('services.cta.label')} href={t('services.cta.href')} />
+  </Section>
+</Layout>

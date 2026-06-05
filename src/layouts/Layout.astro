@@ -1,23 +1,68 @@
+---
+import { Font } from "astro:assets";
+import Sidebar from "../components/Sidebar.astro";
+import MobileHeader from "../components/MobileHeader.astro";
+import "../styles/global.css";
+
+const lang = Astro.currentLocale ?? 'en';
+---
+
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>Florencia Nieto</title>
+		<Font cssVariable="--font-andarilho" />
+		<Font cssVariable="--font-leelawadee" />
+		<Font cssVariable="--font-castorgate" />
+		<Font cssVariable="--font-avenir" />
 	</head>
-	<body>
-		<slot />
+	<body class="flex">
+		<div class="hidden md:block shrink-0">
+			<Sidebar />
+		</div>
+		<div id="page-scroll" class="flex-1 min-w-0 flex flex-col overflow-y-auto scroll-smooth">
+			<div class="sticky top-0 z-40 block md:hidden">
+				<MobileHeader />
+			</div>
+			<main class="pb-16 md:pb-24">
+				<slot />
+			</main>
+		</div>
 	</body>
+	<script is:inline>
+		(function () {
+			function setHeaderHeight() {
+				var h = document.querySelector('header');
+				if (h) document.documentElement.style.setProperty('--mobile-header-h', h.offsetHeight + 'px');
+			}
+			setHeaderHeight();
+			window.addEventListener('resize', setHeaderHeight);
+		})();
+	</script>
 </html>
 
-<style>
+<style is:global>
 	html,
 	body {
 		margin: 0;
 		width: 100%;
 		height: 100%;
+	}
+	body {
+		overflow: hidden;
+		background-color: var(--color-surface-primary);
+	}
+	@media (max-width: 767px) {
+		#page-scroll {
+			scroll-padding-top: var(--mobile-header-h, 64px);
+		}
 	}
 </style>

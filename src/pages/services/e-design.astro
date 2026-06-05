@@ -1,0 +1,88 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Section from '../../components/Section.astro';
+import Heading from '../../components/Heading.astro';
+import Body from '../../components/Body.astro';
+import Divider from '../../components/Divider.astro';
+import Button from '../../components/Button.astro';
+import StickyNote from '../../components/StickyNote.astro';
+import ProcessSteps from '../../components/ProcessSteps.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const t = useTranslations(Astro.currentLocale);
+
+const includedItems = [
+  t('services.edesign.included.1'),
+  t('services.edesign.included.2'),
+  t('services.edesign.included.3'),
+  t('services.edesign.included.4'),
+  t('services.edesign.included.5'),
+  t('services.edesign.included.6'),
+];
+
+const steps = [
+  { title: t('services.edesign.process.1.title'), desc: t('services.edesign.process.1.desc') },
+  { title: t('services.edesign.process.2.title'), desc: t('services.edesign.process.2.desc') },
+  { title: t('services.edesign.process.3.title'), desc: t('services.edesign.process.3.desc') },
+  { title: t('services.edesign.process.4.title'), desc: t('services.edesign.process.4.desc') },
+  { title: t('services.edesign.process.5.title'), desc: t('services.edesign.process.5.desc') },
+];
+---
+
+<Layout>
+  <!-- Hero -->
+  <Section noPaddingBottom>
+    <p class="font-body uppercase tracking-widest text-xs text-accent-gold mb-5">
+      {t('services.edesign.numeral')}
+    </p>
+    <Heading variant="h1" class="mb-6">{t('services.edesign.title')}</Heading>
+    <Body class="text-text-secondary italic max-w-2xl">{t('services.edesign.tagline')}</Body>
+  </Section>
+
+  <Divider class="my-12 md:my-16" />
+
+  <!-- Two-column content -->
+  <Section noPaddingTop>
+    <div class="flex flex-col lg:flex-row gap-12 lg:gap-16 xl:gap-24">
+
+      <!-- Left: description, included, pricing -->
+      <div class="flex-1 min-w-0">
+        <Body class="mb-10 max-w-prose">{t('services.edesign.description')}</Body>
+
+        <Heading variant="h2" class="mb-6">{t('services.edesign.included.title')}</Heading>
+        <ul class="space-y-3 mb-10">
+          {includedItems.map(item => (
+            <li class="flex items-start gap-3">
+              <span class="text-accent-gold mt-0.5 flex-shrink-0">—</span>
+              <Body as="span" class="text-text-secondary">{item}</Body>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Right: sticky note -->
+      <div class="lg:w-72 xl:w-80 lg:flex-shrink-0 lg:self-start lg:sticky lg:top-24">
+        <StickyNote
+          title={t('services.edesign.whoItsFor.title')}
+          body={t('services.edesign.whoItsFor.body')}
+          suffix={t('services.edesign.whoItsFor.suffix')}
+        />
+      </div>
+
+    </div>
+  </Section>
+
+  <Divider class="my-4" />
+
+  <!-- How it works -->
+  <Section title={t('services.edesign.process.title')}>
+    <ProcessSteps steps={steps} />
+  </Section>
+
+  <Divider />
+
+  <!-- CTA -->
+  <Section class="text-center">
+    <Button variant="outlined" label={t('services.cta.label')} href={t('services.cta.href')} />
+  </Section>
+</Layout>
