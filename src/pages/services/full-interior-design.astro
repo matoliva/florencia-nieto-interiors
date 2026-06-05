@@ -51,9 +51,7 @@ const steps = [
       <div class="flex-1 min-w-0">
         <Body class="mb-10 max-w-prose">{t('services.full.description')}</Body>
 
-        <p class="font-subheading text-text-display text-xl mb-6">
-          {t('services.full.included.title')}
-        </p>
+        <Heading variant="h2" class="mb-6">{t('services.full.included.title')}</Heading>
         <ul class="space-y-3 mb-10">
           {includedItems.map(item => (
             <li class="flex items-start gap-3">
@@ -62,8 +60,6 @@ const steps = [
             </li>
           ))}
         </ul>
-
-        <Body class="text-text-secondary">{t('services.full.pricing')}</Body>
       </div>
 
       <!-- Right: sticky note -->
