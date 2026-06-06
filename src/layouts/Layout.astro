@@ -25,15 +25,15 @@ const lang = Astro.currentLocale ?? 'en';
 		<Font cssVariable="--font-avenir" />
 	</head>
 	<body>
-		<div class="flex max-w-[1600px] mx-auto h-full">
+		<div class="flex h-full">
 			<div class="hidden md:block shrink-0">
 				<Sidebar />
 			</div>
-			<div id="page-scroll" class="flex-1 min-w-0 flex flex-col overflow-y-auto scroll-smooth">
+			<div id="page-scroll" class="flex-1 min-w-0 flex flex-col overflow-y-auto scroll-smooth [container-type:inline-size]">
 				<div class="sticky top-0 z-40 block md:hidden">
 					<MobileHeader />
 				</div>
-				<main class="pb-16 md:pb-24">
+				<main class="pb-16 md:pb-24 max-w-[1600px] mx-auto w-full">
 					<slot />
 				</main>
 			</div>
