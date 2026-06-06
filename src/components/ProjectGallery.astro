@@ -22,13 +22,15 @@ for (let i = 0; i < images.length; i += 2) {
         const variant = (rowIndex + colIndex) % 2 === 0 ? 'landscape' : 'portrait';
         const eager = rowIndex === 0;
         const globalIndex = rowIndex * 2 + colIndex;
+        const flexClass    = variant === 'landscape' ? 'flex-[3]' : 'flex-[2]';
+        const mobileHeight = variant === 'landscape' ? 'h-48'     : 'h-28';
         return (
           <button
             type="button"
             data-lightbox-index={String(globalIndex)}
             data-full-src={getOptimizedCloudinaryUrl(src, { width: 1800 })}
             data-placeholder-src={getOptimizedCloudinaryUrl(src, { width: 700 })}
-            class="cursor-pointer block w-full h-full text-left"
+            class:list={['cursor-pointer block text-left md:h-full', flexClass, mobileHeight]}
             aria-label={`Ver imagen ampliada de ${name}`}
           >
             <ProjectCard
