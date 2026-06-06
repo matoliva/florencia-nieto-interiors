@@ -1,8 +1,12 @@
 ---
+import { Image } from 'astro:assets';
 import Section from './Section.astro';
 import Heading from './Heading.astro';
 import Body from './Body.astro';
 import Button from './Button.astro';
+import service1Img from '../assets/images/service-1.webp';
+import service2Img from '../assets/images/service-2.webp';
+import service3Img from '../assets/images/service-3.webp';
 
 interface Props {
   title: string;
@@ -31,9 +35,9 @@ const {
 } = Astro.props;
 
 const services = [
-  { numeral: service1Numeral, title: service1Title, description: service1Description, href: service1Href },
-  { numeral: service2Numeral, title: service2Title, description: service2Description, href: service2Href },
-  { numeral: service3Numeral, title: service3Title, description: service3Description, href: service3Href },
+  { numeral: service1Numeral, title: service1Title, description: service1Description, href: service1Href, image: service1Img },
+  { numeral: service2Numeral, title: service2Title, description: service2Description, href: service2Href, image: service2Img },
+  { numeral: service3Numeral, title: service3Title, description: service3Description, href: service3Href, image: service3Img },
 ];
 ---
 
@@ -45,62 +49,15 @@ const services = [
         'md:px-6 lg:px-8',
       ]}>
 
-        <!-- Abstract thumbnail -->
-        <div class="h-48 md:h-44 lg:h-52 mb-8 bg-surface-secondary overflow-hidden flex items-center justify-center">
-          {i === 0 && (
-            <!-- Floor plan: horizontal + vertical lines forming room geometry -->
-            <svg viewBox="0 0 280 210" xmlns="http://www.w3.org/2000/svg" class="w-full h-full" aria-hidden="true">
-              <rect width="280" height="210" fill="var(--color-surface-secondary)" />
-              <!-- outer frame -->
-              <rect x="36" y="30" width="208" height="150" fill="none" stroke="var(--color-border-default)" stroke-width="1.2" />
-              <!-- inner room division: vertical -->
-              <line x1="140" y1="30" x2="140" y2="120" stroke="var(--color-border-default)" stroke-width="1" />
-              <!-- inner room division: horizontal -->
-              <line x1="36" y1="120" x2="244" y2="120" stroke="var(--color-border-default)" stroke-width="1" />
-              <!-- door arc left room -->
-              <path d="M 80 120 A 28 28 0 0 0 80 92" fill="none" stroke="var(--color-border-default)" stroke-width="0.9" stroke-dasharray="3 2" />
-              <!-- door arc right room -->
-              <path d="M 180 120 A 24 24 0 0 0 204 120" fill="none" stroke="var(--color-border-default)" stroke-width="0.9" stroke-dasharray="3 2" />
-              <!-- window marks top -->
-              <line x1="90" y1="30" x2="120" y2="30" stroke="var(--color-border-default)" stroke-width="2.5" />
-              <line x1="158" y1="30" x2="196" y2="30" stroke="var(--color-border-default)" stroke-width="2.5" />
-            </svg>
-          )}
-          {i === 1 && (
-            <!-- E-Design: layered documents / screen composition -->
-            <svg viewBox="0 0 280 210" xmlns="http://www.w3.org/2000/svg" class="w-full h-full" aria-hidden="true">
-              <rect width="280" height="210" fill="var(--color-surface-secondary)" />
-              <!-- back layer -->
-              <rect x="66" y="42" width="168" height="126" rx="2" fill="none" stroke="var(--color-border-subtle)" stroke-width="1" />
-              <!-- mid layer, offset -->
-              <rect x="52" y="54" width="168" height="126" rx="2" fill="var(--color-surface-primary)" stroke="var(--color-border-default)" stroke-width="1" opacity="0.85" />
-              <!-- front layer -->
-              <rect x="38" y="38" width="168" height="126" rx="2" fill="var(--color-surface-primary)" stroke="var(--color-border-default)" stroke-width="1.2" />
-              <!-- content lines on front layer -->
-              <line x1="56" y1="68" x2="176" y2="68" stroke="var(--color-border-default)" stroke-width="0.8" />
-              <line x1="56" y1="82" x2="148" y2="82" stroke="var(--color-border-default)" stroke-width="0.8" />
-              <line x1="56" y1="100" x2="176" y2="100" stroke="var(--color-border-default)" stroke-width="0.8" />
-              <line x1="56" y1="114" x2="130" y2="114" stroke="var(--color-border-default)" stroke-width="0.8" />
-              <line x1="56" y1="132" x2="176" y2="132" stroke="var(--color-border-default)" stroke-width="0.8" />
-              <line x1="56" y1="146" x2="160" y2="146" stroke="var(--color-border-default)" stroke-width="0.8" />
-            </svg>
-          )}
-          {i === 2 && (
-            <!-- Consultation: single focal arc + dot, minimalist -->
-            <svg viewBox="0 0 280 210" xmlns="http://www.w3.org/2000/svg" class="w-full h-full" aria-hidden="true">
-              <rect width="280" height="210" fill="var(--color-surface-secondary)" />
-              <!-- outer arc -->
-              <path d="M 80 168 A 96 96 0 0 1 200 168" fill="none" stroke="var(--color-border-default)" stroke-width="1" />
-              <!-- mid arc -->
-              <path d="M 100 168 A 64 64 0 0 1 180 168" fill="none" stroke="var(--color-border-default)" stroke-width="1" />
-              <!-- inner arc -->
-              <path d="M 120 168 A 32 32 0 0 1 160 168" fill="none" stroke="var(--color-border-default)" stroke-width="1" />
-              <!-- focal vertical -->
-              <line x1="140" y1="72" x2="140" y2="168" stroke="var(--color-border-default)" stroke-width="0.9" stroke-dasharray="4 3" />
-              <!-- focal dot -->
-              <circle cx="140" cy="72" r="4" fill="none" stroke="var(--color-border-default)" stroke-width="1.2" />
-            </svg>
-          )}
+        <!-- Service image -->
+        <div class="h-40 md:h-44 lg:h-52 mb-8 overflow-hidden">
+          <Image
+            src={service.image}
+            alt={service.title}
+            class="w-full h-full object-contain"
+            widths={[400, 700]}
+            sizes="(min-width: 768px) 33vw, 100vw"
+          />
         </div>
 
         <!-- Service numeral -->
