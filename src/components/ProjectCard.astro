@@ -16,7 +16,7 @@ const flexClass    = variant === 'landscape' ? 'flex-[3]' : 'flex-[2]';
 const mobileHeight = variant === 'landscape' ? 'h-48'     : 'h-28';
 
 const src    = getOptimizedCloudinaryUrl(image, { width: 800 });
-const srcset = getCloudinarySrcSet(image, [400, 800, 1200]);
+const srcset = getCloudinarySrcSet(image, [400, 800, 1200, 1600]);
 
 const Tag = href ? 'a' : 'div';
 const sizeClasses = href ? [flexClass, mobileHeight] : ['w-full', 'h-full'];

@@ -144,7 +144,7 @@ export const projects: Project[] = [
     name: 'Family Flow',
     cover: cdn + 'v1631131131/deptoMaral34/deptoMaral34-16_ocl7hb.jpg',
     description:
-      'This holiday apartment redesign for a family of five balanced furniture the client had already purchased specifically for the space with a cohesive, spacious look. A custom, wall-mounted TV unit added visual lightness to the living and dining area, while vertical mirrors and reflective surfaces in the kitchen maximized brightness and space, creating a welcoming and functional environment.',
+      'This holiday apartment redesign for a family of five balanced the furniture the client had already purchased specifically for the space with a cohesive, spacious look. A custom, wall-mounted TV unit added visual lightness to the living and dining area, while vertical mirrors and reflective surfaces in the kitchen maximized brightness and space, creating a welcoming and functional environment.',
     headerImage: cdn + 'v1631131728/deptoMaral34/deptoMaral34-27_jldkfa.jpg',
     imageGallery: [
       cdn + 'v1631131333/deptoMaral34/deptoMaral34-20_yplhvg.jpg',
@@ -395,7 +395,7 @@ export const projects: Project[] = [
     name: 'Modern Coastal',
     cover: cdn + 'v1631192816/deptoMaralExplanada/deptoMaralExplanada-3_tjl3wm.jpg',
     description:
-      'Located in the first tower of the three-tower Maral Explanada complex, designed by renowned architect Cesar Pelli, this brand-new beachfront holiday apartment needed to be customised for a family. The style was clear from the beginning: modern, comfortable, and easy to maintain, perfect for enjoying and relaxing year-round.',
+      'Located in the first tower of the three-tower Maral Explanada complex, designed by renowned architect César Pelli, this brand-new beachfront holiday apartment needed to be customised for a family. The style was clear from the beginning: modern, comfortable, and easy to maintain, perfect for enjoying and relaxing year-round.',
     headerImage: cdn + 'v1631193079/deptoMaralExplanada/deptoMaralExplanada-11_a1whlt.jpg',
     imageGallery: [
       cdn + 'v1631192782/deptoMaralExplanada/deptoMaralExplanada-2_hytkc3.jpg',

@@ -23,6 +23,9 @@ const { name, subtitle } = Astro.props;
         alt={name}
         class="w-full h-auto"
         loading="eager"
+        widths={[320, 480, 640, 768]}
+        sizes="(min-width: 768px) 384px, 320px"
+        quality={85}
       />
     </div>
   </div>
