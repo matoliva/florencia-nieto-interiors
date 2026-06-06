@@ -113,8 +113,8 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: 'boho-haven',
-    name: 'Boho Haven',
+    slug: 'boho-heaven',
+    name: 'Boho Heaven',
     cover: cdn + 'v1631128400/deptoBrandsen/deptoBrandsen-1_opinbb.jpg',
     description:
       'This apartment redesign reflected the essence of a young woman passionate about surfing and yoga, transforming the space into a true home. A boho chic aesthetic was achieved by repurposing furniture, enhancing lighting, and incorporating warm textures and soft pink tones, while functional upgrades in the kitchen and bedroom added both style and practicality tailored to her lifestyle.',
