@@ -7,11 +7,17 @@ import Section from '../../components/Section.astro';
 import Quote from '../../components/Quote.astro';
 import Button from '../../components/Button.astro';
 import { useTranslations } from '../../i18n/utils';
+import { personSchema, businessSchema } from '../../utils/schema';
 
 const t = useTranslations(Astro.currentLocale);
 ---
 
-<Layout>
+<Layout
+  title={t('seo.about.title')}
+  description={t('seo.about.description')}
+  type="profile"
+  jsonLd={[personSchema(), businessSchema()]}
+>
   <AboutHero name={t('about.hero.name')} subtitle={t('about.hero.subtitle')} />
   <Divider />
   <AboutDescription

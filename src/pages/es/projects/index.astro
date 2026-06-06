@@ -6,11 +6,19 @@ import Divider from '../../../components/Divider.astro';
 import Section from '../../../components/Section.astro';
 import Button from '../../../components/Button.astro';
 import { useTranslations } from '../../../i18n/utils';
+import { breadcrumbSchema } from '../../../utils/schema';
 
 const t = useTranslations(Astro.currentLocale);
 ---
 
-<Layout>
+<Layout
+  title={t('seo.projects.title')}
+  description={t('seo.projects.description')}
+  jsonLd={breadcrumbSchema([
+    { name: 'Inicio', url: '/es/' },
+    { name: 'Proyectos', url: '/es/projects' },
+  ])}
+>
   <ProjectsHero title={t('projects.hero.title')} subtitle={t('projects.hero.subtitle')} />
   <Divider />
   <ProjectsGrid />
