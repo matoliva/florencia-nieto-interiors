@@ -7,8 +7,11 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://florencianieto.com',
   output: 'server',
   adapter: vercel(),
+  trailingSlash: 'never',
+  build: { format: 'file' },
   integrations: [react()],
 
   i18n: {

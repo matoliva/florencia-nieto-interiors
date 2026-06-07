@@ -40,7 +40,7 @@ const base = Astro.currentLocale === 'es' ? '/es/projects' : '/projects';
     <a href={`${base}/${project2Slug}`} class="relative flex-[2] h-72 md:h-full overflow-hidden group">
       <img
         src={getOptimizedCloudinaryUrl(project2Cover, { width: 600 })}
-        srcset={getCloudinarySrcSet(project2Cover, [400, 600, 1200])}
+        srcset={getCloudinarySrcSet(project2Cover, [400, 600, 1200, 1600])}
         sizes="(max-width: 768px) 100vw, 40vw"
         alt={project2Name}
         loading="eager"

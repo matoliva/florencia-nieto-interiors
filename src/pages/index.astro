@@ -9,12 +9,13 @@ import ContactSection from '../components/ContactSection.astro';
 import Divider from '../components/Divider.astro';
 import { useTranslations } from '../i18n/utils';
 import { projects } from '../data/projects';
+import { businessSchema } from '../utils/schema';
 
 const t = useTranslations(Astro.currentLocale);
-const p1 = projects.find(p => p.slug === 'timeless-home')!;
-const p2 = projects.find(p => p.slug === 'bold-gathering')!;
+const p1 = projects.find(p => p.slug === 'bold-gathering')!;
+const p2 = projects.find(p => p.slug === 'timeless-home')!;
 ---
-<Layout>
+<Layout title={t('seo.home.title')} description={t('seo.home.description')} jsonLd={businessSchema()}>
   <Hero line1={t('home.hero.line1')} line2={t('home.hero.line2')} />
   <Section>
     <Quote quote={t('home.quote')} />

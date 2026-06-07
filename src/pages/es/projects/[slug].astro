@@ -7,6 +7,8 @@ import Section from '../../../components/Section.astro';
 import Button from '../../../components/Button.astro';
 import { projects } from '../../../data/projects';
 import { useTranslations } from '../../../i18n/utils';
+import { projectSchema, breadcrumbSchema } from '../../../utils/schema';
+import { getOptimizedCloudinaryUrl } from '../../../utils/cloudinary';
 
 export const prerender = true;
 
@@ -19,9 +21,31 @@ export function getStaticPaths() {
 
 const { project } = Astro.props;
 const t = useTranslations(Astro.currentLocale);
+
+const projectUrl = `/es/projects/${project.slug}`;
+const ogImage = getOptimizedCloudinaryUrl(project.cover, { width: 1200 });
+const jsonLd = [
+  projectSchema({
+    name: project.name,
+    description: project.description,
+    url: projectUrl,
+    images: project.imageGallery.slice(0, 6),
+  }),
+  breadcrumbSchema([
+    { name: 'Inicio', url: '/es/' },
+    { name: 'Proyectos', url: '/es/projects' },
+    { name: project.name, url: projectUrl },
+  ]),
+];
 ---
 
-<Layout>
+<Layout
+  title={`${project.name}${t('seo.project.titleSuffix')}`}
+  description={project.description}
+  image={ogImage}
+  type="article"
+  jsonLd={jsonLd}
+>
   <ProjectDetailHero
     name={project.name}
     description={project.description}
