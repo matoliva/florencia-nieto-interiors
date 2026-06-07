@@ -1,0 +1,61 @@
+---
+/**
+ * Per-page SEO meta tags: title, description, canonical, hreflang alternates,
+ * Open Graph and Twitter cards, robots. Computes localized URLs from the
+ * current pathname so the EN (default) and ES (/es/ prefix) variants always
+ * cross-reference each other (self-referencing + reciprocal hreflang).
+ */
+const SITE_NAME = 'Florencia Nieto';
+const DEFAULT_OG_IMAGE = '/og-image.jpg';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  noindex?: boolean;
+  type?: 'website' | 'article' | 'profile';
+}
+
+const { title, description, image, noindex = false, type = 'website' } = Astro.props;
+
+// Astro.site is set in astro.config.mjs — fall back defensively.
+const site = Astro.site ?? new URL('https://florencianieto.com');
+const currentLocale = Astro.currentLocale ?? 'en';
+
+const pathname = Astro.url.pathname;
+const canonical = new URL(pathname, site).href;
+
+// Strip the /es prefix to get the shared base path, then rebuild both locales.
+const basePath = pathname.replace(/^\/es(?=\/|$)/, '') || '/';
+const enUrl = new URL(basePath, site).href;
+const esUrl = new URL(basePath === '/' ? '/es' : `/es${basePath}`, site).href;
+
+const ogImage = new URL(image ?? DEFAULT_OG_IMAGE, site).href;
+const ogLocale = currentLocale === 'es' ? 'es_ES' : 'en_NZ';
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+<meta name="robots" content={noindex ? 'noindex,follow' : 'index,follow'} />
+
+{!noindex && (
+  <>
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <link rel="alternate" hreflang="es" href={esUrl} />
+    <link rel="alternate" hreflang="x-default" href={enUrl} />
+  </>
+)}
+
+<meta property="og:type" content={type} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:site_name" content={SITE_NAME} />
+<meta property="og:locale" content={ogLocale} />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />

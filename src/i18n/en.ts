@@ -179,4 +179,19 @@ export default {
   'services.consult.process.3.desc':    "You'll receive personalised advice and practical recommendations tailored specifically to your space, helping you move forward with confidence and avoid costly mistakes.",
   'services.consult.process.4.title':   'Moving Forward',
   'services.consult.process.4.desc':    "Following the consultation, you'll have a clearer vision and actionable direction to implement changes at your own pace and in a way that suits your lifestyle.",
+
+  // SEO — per-page titles & meta descriptions (NZ-focused keywords)
+  'seo.home.title':            'Interior Designer in Auckland, NZ | Florencia Nieto',
+  'seo.home.description':      'Florencia Nieto is an Auckland interior designer creating considered, layered homes across New Zealand — full interior design, e-design and consultation services.',
+  'seo.about.title':           'About Florencia Nieto — Auckland Interior Designer',
+  'seo.about.description':     'Meet Florencia Nieto, an Auckland-based interior designer with an international background, creating refined, livable interiors across New Zealand.',
+  'seo.projects.title':        'Interior Design Projects — Auckland & NZ | Florencia Nieto',
+  'seo.projects.description':  'A selected portfolio of residential interior design projects by Florencia Nieto — renovations, apartments and homes designed with an editorial eye.',
+  'seo.services.full.title':       'Full Interior Design Service — Auckland | Florencia Nieto',
+  'seo.services.full.description': 'End-to-end interior design in Auckland, NZ — from concept and space planning to styling and installation, personally managed by Florencia Nieto.',
+  'seo.services.edesign.title':       'E-Design — Online Interior Design NZ | Florencia Nieto',
+  'seo.services.edesign.description': 'Remote online interior design from $650 NZD. Get a professional plan, moodboards and shopping list to style your space at your own pace, anywhere in NZ.',
+  'seo.services.consult.title':       'Interior Design Consultation — Auckland | Florencia Nieto',
+  'seo.services.consult.description': 'A focused interior design consultation in Auckland from $250 NZD — expert advice on layout, colour and styling, in-home or online, before you commit.',
+  'seo.project.titleSuffix':   ' — Interior Design Project | Florencia Nieto',
 } as const;

@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Disallow: /showcase
+Disallow: /es/showcase
+Disallow: /api/
+
+Sitemap: https://florencianieto.com/sitemap.xml

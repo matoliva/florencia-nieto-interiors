@@ -8,6 +8,7 @@ import Button from '../../components/Button.astro';
 import StickyNote from '../../components/StickyNote.astro';
 import ProcessSteps from '../../components/ProcessSteps.astro';
 import { useTranslations } from '../../i18n/utils';
+import { serviceSchema } from '../../utils/schema';
 
 const t = useTranslations(Astro.currentLocale);
 
@@ -29,7 +30,17 @@ const steps = [
 ];
 ---
 
-<Layout>
+<Layout
+  title={t('seo.services.edesign.title')}
+  description={t('seo.services.edesign.description')}
+  jsonLd={serviceSchema({
+    name: t('services.edesign.title'),
+    description: t('seo.services.edesign.description'),
+    url: '/services/e-design',
+    serviceType: 'Interior Design',
+    price: 650,
+  })}
+>
   <!-- Hero -->
   <Section noPaddingBottom>
     <p class="font-body uppercase tracking-widest text-xs text-accent-gold mb-5">

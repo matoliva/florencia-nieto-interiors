@@ -1,10 +1,33 @@
 ---
+import Analytics from '@vercel/analytics/astro'
+
 import { Font } from "astro:assets";
 import Sidebar from "../components/Sidebar.astro";
 import MobileHeader from "../components/MobileHeader.astro";
+import Seo from "../components/Seo.astro";
 import "../styles/global.css";
 
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  noindex?: boolean;
+  type?: 'website' | 'article' | 'profile';
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+}
+
 const lang = Astro.currentLocale ?? 'en';
+
+const {
+  title = 'Florencia Nieto — Interior Designer in Auckland, New Zealand',
+  description = 'Florencia Nieto is an Auckland-based interior designer creating considered, layered spaces across New Zealand. Full interior design, e-design and consultation services.',
+  image,
+  noindex = false,
+  type = 'website',
+  jsonLd,
+} = Astro.props;
+
+const schemas = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 ---
 
 <!doctype html>
@@ -18,11 +41,15 @@ const lang = Astro.currentLocale ?? 'en';
 		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Florencia Nieto</title>
+		<Seo title={title} description={description} image={image} noindex={noindex} type={type} />
+		{schemas.map((schema) => (
+			<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+		))}
 		<Font cssVariable="--font-andarilho" />
 		<Font cssVariable="--font-leelawadee" />
 		<Font cssVariable="--font-castorgate" />
 		<Font cssVariable="--font-avenir" />
+		<Analytics />
 	</head>
 	<body>
 		<div class="flex h-full">
