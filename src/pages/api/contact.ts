@@ -47,7 +47,7 @@ export const POST: APIRoute = async ({ request }) => {
   const email     = String(data.email     ?? '').trim();
   const message   = String(data.message   ?? '').trim();
 
-  if (!firstName || !lastName || !email || !message) {
+  if (!firstName || !lastName || !email) {
     return new Response(JSON.stringify({ error: 'Missing required fields' }), {
       status: 400,
       headers: { 'Content-Type': 'application/json' },
@@ -87,6 +87,7 @@ export const POST: APIRoute = async ({ request }) => {
   const projectAddress  = rawAddress || '—';
   const preferredContact = String(data.preferredContact ?? '') || '—';
   const source          = String(data.source          ?? '') || '—';
+  const displayMessage  = message || '—';
 
   const resend     = new Resend(import.meta.env.RESEND_API_KEY);
   const toEmail    = import.meta.env.CONTACT_TO_EMAIL;
@@ -110,7 +111,7 @@ export const POST: APIRoute = async ({ request }) => {
       <h2 style="margin-bottom:16px">New inquiry from ${escapeHtml(firstName)} ${escapeHtml(lastName)}</h2>
       <table style="border-collapse:collapse;margin-bottom:24px">${tableRows}</table>
       <h3 style="margin-bottom:8px">Message</h3>
-      <p style="white-space:pre-wrap;background:#f5f3f0;padding:16px;border-radius:4px">${escapeHtml(message)}</p>
+      <p style="white-space:pre-wrap;background:#f5f3f0;padding:16px;border-radius:4px">${escapeHtml(displayMessage)}</p>
     </div>
   `;
 
