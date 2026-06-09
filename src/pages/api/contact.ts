@@ -88,8 +88,9 @@ export const POST: APIRoute = async ({ request }) => {
   const preferredContact = String(data.preferredContact ?? '') || '—';
   const source          = String(data.source          ?? '') || '—';
 
-  const resend  = new Resend(import.meta.env.RESEND_API_KEY);
-  const toEmail = import.meta.env.CONTACT_TO_EMAIL;
+  const resend     = new Resend(import.meta.env.RESEND_API_KEY);
+  const toEmail    = import.meta.env.CONTACT_TO_EMAIL;
+  const fromEmail  = import.meta.env.CONTACT_FROM_EMAIL ?? 'onboarding@resend.dev';
 
   const rows = [
     ['Name',              `${escapeHtml(firstName)} ${escapeHtml(lastName)}`],
@@ -115,7 +116,7 @@ export const POST: APIRoute = async ({ request }) => {
 
   try {
     await resend.emails.send({
-      from: 'Florencia Nieto Website <onboarding@resend.dev>',
+      from: `Florencia Nieto <${fromEmail}>`,
       to: toEmail,
       replyTo: email,
       subject: `New inquiry from ${firstName} ${lastName}`,
