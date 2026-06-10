@@ -1,5 +1,6 @@
 ---
 import Analytics from '@vercel/analytics/astro'
+import SpeedInsights from '@vercel/speed-insights/astro';
 
 import { Font } from "astro:assets";
 import Sidebar from "../components/Sidebar.astro";
@@ -50,6 +51,7 @@ const schemas = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 		<Font cssVariable="--font-castorgate" />
 		<Font cssVariable="--font-avenir" />
 		<Analytics />
+		<SpeedInsights />
 	</head>
 	<body>
 		<div class="flex h-full">
