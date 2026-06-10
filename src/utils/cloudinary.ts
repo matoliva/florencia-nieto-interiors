@@ -1,6 +1,6 @@
 interface CloudinaryImageOptions {
   width?: number;
-  quality?: 'auto' | number;
+  quality?: 'auto' | 'auto:best' | 'auto:good' | 'auto:eco' | 'auto:low' | number;
   format?: 'auto' | string;
 }
 
@@ -8,7 +8,7 @@ const CLOUDINARY_UPLOAD_SEGMENT = '/image/upload/';
 
 export function getOptimizedCloudinaryUrl(
   src: string,
-  { width, quality = 'auto', format = 'auto' }: CloudinaryImageOptions = {}
+  { width, quality = 'auto:best', format = 'auto' }: CloudinaryImageOptions = {}
 ): string {
   if (!src.includes('res.cloudinary.com') || !src.includes(CLOUDINARY_UPLOAD_SEGMENT)) {
     return src;
@@ -26,6 +26,12 @@ export function getOptimizedCloudinaryUrl(
   );
 }
 
-export function getCloudinarySrcSet(src: string, widths: number[]): string {
-  return widths.map(width => `${getOptimizedCloudinaryUrl(src, { width })} ${width}w`).join(', ');
+export function getCloudinarySrcSet(
+  src: string,
+  widths: number[],
+  options: Omit<CloudinaryImageOptions, 'width'> = {}
+): string {
+  return widths
+    .map(width => `${getOptimizedCloudinaryUrl(src, { ...options, width })} ${width}w`)
+    .join(', ');
 }
