@@ -152,6 +152,22 @@ export function projectSchema(input: {
   };
 }
 
+/**
+ * FAQ rich result. The same Q&A pairs must be visible on the page
+ * (Google requires schema content to match rendered content).
+ */
+export function faqSchema(items: { question: string; answer: string }[]): Json {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: items.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: { '@type': 'Answer', text: item.answer },
+    })),
+  };
+}
+
 /** Breadcrumb trail. `items` are ordered [{ name, url }, ...]. */
 export function breadcrumbSchema(items: { name: string; url: string }[]): Json {
   return {

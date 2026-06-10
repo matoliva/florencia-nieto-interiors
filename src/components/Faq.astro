@@ -1,0 +1,26 @@
+---
+/**
+ * Visible FAQ list. Pair with `faqSchema(items)` passed to <Layout jsonLd>
+ * so the rendered Q&A matches the FAQPage structured data.
+ */
+import Heading from './Heading.astro';
+import Body from './Body.astro';
+
+interface Props {
+  title: string;
+  items: { question: string; answer: string }[];
+}
+
+const { title, items } = Astro.props;
+---
+<Heading variant="h2" class="mb-8">{title}</Heading>
+<dl class="space-y-8 max-w-prose">
+  {items.map((item) => (
+    <div>
+      <dt class="font-body font-semibold text-text-primary mb-2">{item.question}</dt>
+      <dd class="m-0">
+        <Body as="div" class="text-text-secondary">{item.answer}</Body>
+      </dd>
+    </div>
+  ))}
+</dl>

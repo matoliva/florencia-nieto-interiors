@@ -27,12 +27,12 @@ const ogImage = getOptimizedCloudinaryUrl(project.cover, { width: 1200 });
 const jsonLd = [
   projectSchema({
     name: project.name,
-    description: project.description,
+    description: project.descriptionEs,
     url: projectUrl,
     images: project.imageGallery.slice(0, 6),
   }),
   breadcrumbSchema([
-    { name: 'Inicio', url: '/es/' },
+    { name: 'Inicio', url: '/es' },
     { name: 'Proyectos', url: '/es/projects' },
     { name: project.name, url: projectUrl },
   ]),
@@ -41,14 +41,14 @@ const jsonLd = [
 
 <Layout
   title={`${project.name}${t('seo.project.titleSuffix')}`}
-  description={project.description}
+  description={project.descriptionEs}
   image={ogImage}
   type="article"
   jsonLd={jsonLd}
 >
   <ProjectDetailHero
     name={project.name}
-    description={project.description}
+    description={project.descriptionEs}
     headerImage={project.headerImage}
   />
   <Divider />
