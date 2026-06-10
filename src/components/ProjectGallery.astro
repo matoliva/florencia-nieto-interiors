@@ -1,6 +1,6 @@
 ---
 import ProjectCard from './ProjectCard.astro';
-import { getOptimizedCloudinaryUrl } from '../utils/cloudinary';
+import { getOptimizedCloudinaryUrl, getCloudinarySrcSet } from '../utils/cloudinary';
 
 interface Props {
   images: string[];
@@ -28,8 +28,9 @@ for (let i = 0; i < images.length; i += 2) {
           <button
             type="button"
             data-lightbox-index={String(globalIndex)}
-            data-full-src={getOptimizedCloudinaryUrl(src, { width: 2400 })}
-            data-placeholder-src={getOptimizedCloudinaryUrl(src, { width: 700 })}
+            data-full-srcset={getCloudinarySrcSet(src, [1200, 1600, 2000, 2400, 3200])}
+            data-full-src={getOptimizedCloudinaryUrl(src, { width: 1600 })}
+            data-placeholder-src={getOptimizedCloudinaryUrl(src, { width: 700, quality: 'auto:low' })}
             class:list={['cursor-pointer block text-left md:h-full', flexClass, mobileHeight]}
             aria-label={`Ver imagen ampliada de ${name}`}
           >
@@ -212,21 +213,22 @@ for (let i = 0; i < images.length; i += 2) {
       Gallery.initKeyboard();
 
       // Preload first 3 full-res images so the first click is instant
-      this.buttons.slice(0, 3).forEach((btn) => {
-        if (btn.dataset.fullSrc) Gallery.preload(btn.dataset.fullSrc);
-      });
+      this.buttons.slice(0, 3).forEach((btn) => Gallery.preload(btn));
     }
 
-    private static preload(src: string) {
+    // Preload via srcset + sizes so the browser fetches the exact same
+    // candidate the lightbox will later display (viewport × DPR aware).
+    private static preload(btn: HTMLButtonElement) {
       const img = new window.Image();
-      img.src = src;
+      img.sizes = '90vw';
+      if (btn.dataset.fullSrcset) img.srcset = btn.dataset.fullSrcset;
+      img.src = btn.dataset.fullSrc ?? '';
     }
 
     private showImage(index: number) {
       if (index < 0 || index >= this.buttons.length) return;
       this.currentIndex = index;
       const btn = this.buttons[index];
-      const fullSrc = btn.dataset.fullSrc ?? '';
 
       // Show blurred placeholder while full-res loads
       this.placeholder.src = btn.dataset.placeholderSrc ?? '';
@@ -237,7 +239,9 @@ for (let i = 0; i < images.length; i += 2) {
         this.img.classList.remove('is-loading');
         this.placeholder.classList.remove('is-visible');
       };
-      this.img.src = fullSrc;
+      this.img.sizes = '90vw';
+      this.img.srcset = btn.dataset.fullSrcset ?? '';
+      this.img.src = btn.dataset.fullSrc ?? '';
       this.img.alt = btn.getAttribute('aria-label') ?? '';
 
       // If already cached, onload won't fire
@@ -249,8 +253,8 @@ for (let i = 0; i < images.length; i += 2) {
       // Preload adjacent images for near-instant navigation
       const next = this.buttons[(index + 1) % this.buttons.length];
       const prev = this.buttons[(index - 1 + this.buttons.length) % this.buttons.length];
-      if (next?.dataset.fullSrc) Gallery.preload(next.dataset.fullSrc);
-      if (prev?.dataset.fullSrc) Gallery.preload(prev.dataset.fullSrc);
+      if (next) Gallery.preload(next);
+      if (prev) Gallery.preload(prev);
     }
 
     private open(index: number) {
