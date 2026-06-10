@@ -10,7 +10,7 @@ const { quote, class: className } = Astro.props;
 ---
 <blockquote class:list={['border-l-2 border-accent-gold pl-8 md:pl-10', className]}>
   <Heading variant="h2" as="p" class="font-subheading">
-    <span class="text-accent-gold" aria-hidden="true">" </span>{quote}<span class="text-accent-gold" aria-hidden="true"> "</span>
+    <span class="text-accent-gold" aria-hidden="true">"</span>{quote}<span class="text-accent-gold" aria-hidden="true">"</span>
   </Heading>
   <footer class="mt-4 font-signature text-text-secondary text-xl flex items-center justify-end gap-2">
     <span class="font-body font-light text-text-tertiary">–</span>
