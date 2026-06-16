@@ -1,0 +1,25 @@
+---
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+const locale = Astro.currentLocale ?? 'en';
+const t = useTranslations(locale);
+const year = new Date().getFullYear();
+---
+
+<div class:list={['footer-credit flex flex-col gap-1 text-xs text-text-tertiary', className]}>
+  <p>{t('footer.copyright').replace('{year}', String(year))}</p>
+  <p>
+    {t('footer.madeWith')}{' '}
+    <a
+      href="mailto:olivamati@gmail.com"
+      class="hover:text-accent-gold-soft transition-colors duration-200"
+    >
+      Matías Oliva
+    </a>
+  </p>
+</div>

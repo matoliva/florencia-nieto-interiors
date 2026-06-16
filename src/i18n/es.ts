@@ -86,6 +86,9 @@ export default {
   'social.houzz':         'Houzz',
   'social.email':         'Email',
 
+  'footer.copyright':     '© {year} Florencia Nieto',
+  'footer.madeWith':      'Hecho con cariño por',
+
   // Service page hrefs (used by ServicesSection on home page)
   'home.services.service1.href': '/es/services/full-interior-design',
   'home.services.service2.href': '/es/services/e-design',

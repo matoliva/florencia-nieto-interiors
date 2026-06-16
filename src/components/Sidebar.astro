@@ -3,6 +3,7 @@ import { getRelativeLocaleUrl } from 'astro:i18n';
 import { useTranslations, getActiveRouteChecker } from '../i18n/utils';
 import NavLink from './NavLink.astro';
 import ExternalLink from './ExternalLink.astro';
+import FooterCredit from './FooterCredit.astro';
 import Logo from './Logo.astro';
 import { getTextureImage, textureStyle } from '../utils/texture';
 import { navLinks, socialLinks } from '../config/nav';
@@ -36,10 +37,13 @@ const texture = await getTextureImage(1318);
       ))}
     </nav>
 
-    <div class="sidebar-social mt-auto pt-10 border-t border-border-subtle flex flex-col gap-5">
-      {socialLinks.map(({ key, href }) => (
-        <ExternalLink label={t(key)} href={href} />
-      ))}
+    <div class="sidebar-social mt-auto pt-10 border-t border-border-subtle flex flex-col gap-12">
+      <div class="flex flex-col gap-5">
+        {socialLinks.map(({ key, href }) => (
+          <ExternalLink label={t(key)} href={href} />
+        ))}
+      </div>
+      <FooterCredit />
     </div>
   </div>
 </aside>

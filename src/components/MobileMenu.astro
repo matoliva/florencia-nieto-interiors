@@ -2,6 +2,7 @@
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import { useTranslations, getActiveRouteChecker } from '../i18n/utils';
 import ExternalLink from './ExternalLink.astro';
+import FooterCredit from './FooterCredit.astro';
 import Logo from './Logo.astro';
 import { getTextureImage, textureStyle } from '../utils/texture';
 import { navLinks, socialLinks } from '../config/nav';
@@ -38,9 +39,9 @@ const texture = await getTextureImage(1318);
       </button>
     </div>
 
-    <Logo locale={locale} width={220} />
+    <Logo locale={locale} width={180} />
 
-    <nav class="mt-12 flex flex-col items-center gap-7" aria-label="Mobile navigation">
+    <nav class="mt-8 flex flex-col items-center gap-6" aria-label="Mobile navigation">
       {navLinks.map(({ key, route }) => (
         <a
           href={buildHref(route)}
@@ -54,17 +55,21 @@ const texture = await getTextureImage(1318);
       ))}
     </nav>
 
-    <div class="menu-social-footer mt-auto w-full pt-10 border-t border-border-subtle flex flex-col items-center gap-5">
-      {socialLinks.map(({ key, href }) => (
-        <ExternalLink label={t(key)} href={href} />
-      ))}
+    <div class="menu-social-footer mt-auto w-full pt-8 border-t border-border-subtle flex flex-col items-center gap-10">
+      <div class="flex flex-col items-center gap-5">
+        {socialLinks.map(({ key, href }) => (
+          <ExternalLink label={t(key)} href={href} />
+        ))}
+      </div>
+      <FooterCredit class="items-center text-center" />
     </div>
   </div>
 </div>
 
 <style>
   /* Override ExternalLink's hardcoded text-sm — :global() escapes Astro's style scope */
-  :global(.menu-social-footer a) {
+  :global(.menu-social-footer a),
+  :global(.menu-social-footer .footer-credit) {
     font-size: var(--font-size-menu-footer);
   }
 </style>
