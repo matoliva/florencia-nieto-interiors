@@ -5,6 +5,8 @@ export interface Project {
   name: string;
   cover: string;
   description: string;
+  /** Spanish variant of `description`, used on /es/ project pages. */
+  descriptionEs: string;
   headerImage: string;
   imageGallery: string[];
 }
@@ -16,6 +18,8 @@ export const projects: Project[] = [
     cover: cdn + 'v1727078888/CasaConcepcionArenal/vldkubifdfbqervwmryd.jpg',
     description:
       "This renovation transformed the ground floor into a stylish and functional space that seamlessly blends contemporary design with the couple's love for wine and entertainment. Custom furniture, neutral tones, and strategic lighting elevate the home's aesthetic, while the reconfigured layout enhances flow and connection to the outdoors.",
+    descriptionEs:
+      'Esta renovación transformó la planta baja en un espacio elegante y funcional que combina el diseño contemporáneo con la pasión de la pareja por el vino y las reuniones. Muebles a medida, tonos neutros y una iluminación estratégica elevan la estética del hogar, mientras que la nueva distribución mejora la circulación y la conexión con el exterior.',
     headerImage: cdn + 'v1727079247/CasaConcepcionArenal/jmmkapkjddm3sdfjclkb.jpg',
     imageGallery: [
       cdn + 'v1727846647/CasaConcepcionArenal/yhggwjk2jbzmn4qzormn.webp',
@@ -42,6 +46,8 @@ export const projects: Project[] = [
     cover: cdn + 'v1631133909/deptoBrown/deptoBrown-38_dzrkeq.jpg',
     description:
       'This studio apartment was transformed into a personalised, multifunctional space that offers distinct living, dining, and bedroom areas without the need for conversion. A neutral palette and thoughtful lighting brought cohesion and comfort to the entire room.',
+    descriptionEs:
+      'Este monoambiente se transformó en un espacio personalizado y multifuncional que ofrece zonas diferenciadas de estar, comedor y dormitorio sin necesidad de conversión. Una paleta neutra y una iluminación cuidada aportaron cohesión y confort a todo el ambiente.',
     headerImage: cdn + 'v1631134453/deptoBrown/deptoBrown-53_pfygjq.jpg',
     imageGallery: [
       cdn + 'v1631134419/deptoBrown/deptoBrown-52_xm5p3a.jpg',
@@ -68,6 +74,8 @@ export const projects: Project[] = [
     cover: cdn + 'v1727080166/Almafuerte/o6okwhphbktlqgkmk7in.jpg',
     description:
       "This interior design project refined a house that was already under construction, shaping it into a timeless and elegant home that reflects the client's evolving style. Through thoughtful material selection, custom furniture, and tailored lighting, each space was designed to offer both comfort and sophistication.",
+    descriptionEs:
+      'Este proyecto de interiorismo refinó una casa que ya estaba en construcción, dándole forma a un hogar atemporal y elegante que refleja el estilo en evolución del cliente. A través de una selección cuidadosa de materiales, muebles a medida e iluminación pensada para cada ambiente, cada espacio fue diseñado para ofrecer confort y sofisticación.',
     headerImage: cdn + 'v1727080160/Almafuerte/gp7iu3jri40rynct3yhy.jpg',
     imageGallery: [
       cdn + 'v1727080166/Almafuerte/o6okwhphbktlqgkmk7in.jpg',
@@ -92,6 +100,8 @@ export const projects: Project[] = [
     cover: cdn + 'v1654634549/Dpto%20Gasc%C3%B3n/DSC_8454_cugux4.jpg',
     description:
       'This apartment transformation harmonised the distinct tastes of a retired couple by incorporating calming blue tones on the walls and vibrant accents in the furniture and artwork. The layout was reconfigured for improved functionality, with one bedroom converted into a study and enhanced lighting and storage solutions added to create a brighter, more organised, and lively space that reflects both personalities.',
+    descriptionEs:
+      'La transformación de este departamento armonizó los gustos diferentes de una pareja jubilada incorporando tonos azules serenos en las paredes y acentos vibrantes en los muebles y las obras de arte. La distribución se reconfiguró para mejorar la funcionalidad: un dormitorio se convirtió en estudio y se sumaron soluciones de iluminación y guardado que crearon un espacio más luminoso, organizado y vivo, reflejo de ambas personalidades.',
     headerImage: cdn + 'v1654634677/Dpto%20Gasc%C3%B3n/DSC_8522_wdnijn.jpg',
     imageGallery: [
       cdn + 'v1654634547/Dpto%20Gasc%C3%B3n/DSC_8448_qya0if.jpg',
@@ -118,6 +128,8 @@ export const projects: Project[] = [
     cover: cdn + 'v1631128400/deptoBrandsen/deptoBrandsen-1_opinbb.jpg',
     description:
       'This apartment redesign reflected the essence of a young woman passionate about surfing and yoga, transforming the space into a true home. A boho chic aesthetic was achieved by repurposing furniture, enhancing lighting, and incorporating warm textures and soft pink tones, while functional upgrades in the kitchen and bedroom added both style and practicality tailored to her lifestyle.',
+    descriptionEs:
+      'El rediseño de este departamento reflejó la esencia de una joven apasionada por el surf y el yoga, transformando el espacio en un verdadero hogar. Se logró una estética boho chic reutilizando muebles, mejorando la iluminación e incorporando texturas cálidas y tonos rosados suaves, mientras que las mejoras funcionales en la cocina y el dormitorio sumaron estilo y practicidad a la medida de su estilo de vida.',
     headerImage: cdn + 'v1631129645/deptoBrandsen/deptoBrandsen-18_ei6suf.jpg',
     imageGallery: [
       cdn + 'v1631129332/deptoBrandsen/deptoBrandsen-13_nxvjcn.jpg',
@@ -145,6 +157,8 @@ export const projects: Project[] = [
     cover: cdn + 'v1631131131/deptoMaral34/deptoMaral34-16_ocl7hb.jpg',
     description:
       'This holiday apartment redesign for a family of five balanced the furniture the client had already purchased specifically for the space with a cohesive, spacious look. A custom, wall-mounted TV unit added visual lightness to the living and dining area, while vertical mirrors and reflective surfaces in the kitchen maximized brightness and space, creating a welcoming and functional environment.',
+    descriptionEs:
+      'El rediseño de este departamento de vacaciones para una familia de cinco equilibró los muebles que el cliente ya había comprado para el espacio con una imagen cohesiva y amplia. Un mueble de TV a medida, suspendido en la pared, aportó liviandad visual al living-comedor, mientras que espejos verticales y superficies reflectantes en la cocina maximizaron la luminosidad y la sensación de amplitud, creando un ambiente cálido y funcional.',
     headerImage: cdn + 'v1631131728/deptoMaral34/deptoMaral34-27_jldkfa.jpg',
     imageGallery: [
       cdn + 'v1631131333/deptoMaral34/deptoMaral34-20_yplhvg.jpg',
@@ -171,6 +185,8 @@ export const projects: Project[] = [
     cover: cdn + 'v1631116405/homeOfficeMitre/homeOffice-5_eeorne.jpg',
     description:
       "For this home office redesign, a bold use of colour and geometric shapes transformed the space to match the client's energetic personality. A custom-made desk with ample storage and a circular-patterned accent wall brought vibrancy and functionality.",
+    descriptionEs:
+      'Para el rediseño de este home office, un uso audaz del color y las formas geométricas transformó el espacio para reflejar la personalidad enérgica del cliente. Un escritorio a medida con amplio guardado y una pared de acento con patrón circular aportaron vitalidad y funcionalidad.',
     headerImage: cdn + 'v1631116805/homeOfficeMitre/homeOffice-10_eny5sx.jpg',
     imageGallery: [
       cdn + 'v1631116405/homeOfficeMitre/homeOffice-5_eeorne.jpg',
@@ -197,6 +213,8 @@ export const projects: Project[] = [
     cover: cdn + 'v1631210119/casaArtigas/casaArtigas-5_jkzccr.jpg',
     description:
       "This renovation blended the client's modern black-and-white palette with shades of grey and blue for a fresh, elegant look. Clever storage solutions, including a TV unit and a mobile kitchen island, maximised functionality while enhancing comfort and style throughout the home.",
+    descriptionEs:
+      'Esta renovación combinó la paleta moderna en blanco y negro del cliente con tonos grises y azules para lograr un look fresco y elegante. Soluciones inteligentes de guardado, como un mueble de TV y una isla de cocina móvil, maximizaron la funcionalidad y mejoraron el confort y el estilo en todo el hogar.',
     headerImage: cdn + 'v1631210178/casaArtigas/casaArtigas-7_m0xndr.jpg',
     imageGallery: [
       cdn + 'v1631210119/casaArtigas/casaArtigas-5_jkzccr.jpg',
@@ -217,6 +235,8 @@ export const projects: Project[] = [
     cover: cdn + 'v1631194001/deptoPlayaGrande/deptoPlayaGrande-10_v6lvnf.jpg',
     description:
       "This transformation created a dynamic living and dining space that reflected the client's passion for film while ensuring comfort for gatherings and movie nights. With custom lighting, refreshed furniture, and a bold dining table, the design balanced a masculine aesthetic with vibrant accents for a warm and inviting atmosphere.",
+    descriptionEs:
+      'Esta transformación creó un living-comedor dinámico que refleja la pasión del cliente por el cine, sin perder el confort para reuniones y noches de película. Con iluminación a medida, muebles renovados y una mesa de comedor audaz, el diseño equilibró una estética masculina con acentos vibrantes para lograr una atmósfera cálida y acogedora.',
     headerImage: cdn + 'v1728287341/deptoPlayaGrande/rzov7cvrbdlf3k9gpbyu.png',
     imageGallery: [
       cdn + 'v1631194001/deptoPlayaGrande/deptoPlayaGrande-10_v6lvnf.jpg',
@@ -242,6 +262,8 @@ export const projects: Project[] = [
     cover: cdn + 'v1631219064/casaPinosDeAnchorena/comedor/casaPinos-7_srn78l.jpg',
     description:
       "This dining room redesign transformed the space into a French-inspired retreat that truly reflected the client's personality. By incorporating wainscoting, light-toned wallpaper, and mirrored sliding doors, the design not only maintained the existing features but also introduced a harmonious palette of whites and creams, creating an inviting and elegant atmosphere.",
+    descriptionEs:
+      'El rediseño de este comedor transformó el espacio en un refugio de inspiración francesa que refleja de verdad la personalidad de la clienta. Con boiserie, empapelado de tonos claros y puertas corredizas espejadas, el diseño conservó los elementos existentes e introdujo una paleta armoniosa de blancos y cremas, creando una atmósfera elegante y acogedora.',
     headerImage: '',
     imageGallery: [
       cdn + 'v1631219064/casaPinosDeAnchorena/comedor/casaPinos-7_srn78l.jpg',
@@ -257,6 +279,8 @@ export const projects: Project[] = [
     cover: cdn + 'v1631208957/deptoSantaFe/deptoSantaFe-1_gqassd.jpg',
     description:
       "This project transformed a rental apartment into a serene Nordic-style haven that perfectly matched the client's desire for calmness and lightness. Bespoke, movable furniture enhanced functionality while providing integrated storage solutions that showcased clothing, adding a relaxed and dynamic touch characteristic of Nordic design.",
+    descriptionEs:
+      'Este proyecto transformó un departamento alquilado en un refugio de estilo nórdico, sereno y liviano, en sintonía con el deseo del cliente de calma y luminosidad. Muebles a medida y móviles mejoraron la funcionalidad, con soluciones de guardado integradas que exhiben la ropa y aportan ese toque relajado y dinámico característico del diseño nórdico.',
     headerImage: cdn + 'v1631209379/deptoSantaFe/deptoSantaFe-12_duv54l.jpg',
     imageGallery: [
       cdn + 'v1631208957/deptoSantaFe/deptoSantaFe-1_gqassd.jpg',
@@ -278,6 +302,8 @@ export const projects: Project[] = [
     cover: cdn + 'v1654632845/David%20Ortega/DSC_9637_otswvk.jpg',
     description:
       'This renovation transformed a family home into a modern and welcoming space for the client, who sought to create inviting areas for entertaining and leisure. By enhancing natural light with new curtains and dimmable lighting, along with updating the kitchen and incorporating greenery, the design successfully fostered a warm, vibrant atmosphere perfect for gatherings.',
+    descriptionEs:
+      'Esta renovación transformó una casa familiar en un espacio moderno y acogedor para el cliente, que buscaba crear áreas cálidas para el ocio y las reuniones. Al potenciar la luz natural con cortinas nuevas e iluminación regulable, renovar la cocina e incorporar plantas, el diseño logró una atmósfera cálida y vibrante, perfecta para los encuentros.',
     headerImage: cdn + 'v1654632855/David%20Ortega/DSC_9706_jyeo7r.jpg',
     imageGallery: [
       cdn + 'v1654632842/David%20Ortega/DSC_9654_uwve78.jpg',
@@ -297,6 +323,8 @@ export const projects: Project[] = [
     cover: cdn + 'v1631219612/casaPinosDeAnchorena/quincho/casaPinos-21_i91fcx.jpg',
     description:
       'This space was designed for gatherings with friends, with the aim of creating a warm atmosphere that could accommodate a large number of people. The pool table, although frequently used, was competing for space with the dining table. The solution was to adapt the pool table to serve both functions, maximising the utility of the room. Additionally, different zones were created within the space, including a stylish mirrored bar, to offer a more versatile and welcoming experience.',
+    descriptionEs:
+      'Este espacio fue diseñado para reuniones con amigos, con el objetivo de crear una atmósfera cálida con capacidad para muchas personas. La mesa de pool, aunque se usaba con frecuencia, competía por el espacio con la mesa del comedor. La solución fue adaptarla para cumplir ambas funciones, maximizando la utilidad del ambiente. Además, se crearon distintas zonas dentro del espacio, incluida una elegante barra espejada, para ofrecer una experiencia más versátil y acogedora.',
     headerImage: '',
     imageGallery: [
       cdn + 'v1631219612/casaPinosDeAnchorena/quincho/casaPinos-21_i91fcx.jpg',
@@ -350,6 +378,8 @@ export const projects: Project[] = [
     cover: cdn + 'v1727848669/Twins%20bedroom/iqmnxxam6qucnfmscrwc.webp',
     description:
       'This customized bedroom redesign for twins blended their individual interests in football and princesses into a harmonious space. A soft light green wraparound design, interactive wardrobe illustrations, and bespoke headboards created distinct yet cohesive areas for each child, ensuring a vibrant and balanced atmosphere.',
+    descriptionEs:
+      'El rediseño a medida de este dormitorio para mellizos combinó sus intereses individuales, el fútbol y las princesas, en un espacio armonioso. Un envolvente verde claro suave, ilustraciones interactivas en los placares y respaldos de cama a medida crearon zonas diferenciadas pero cohesivas para cada niño, logrando una atmósfera vibrante y equilibrada.',
     headerImage: '',
     imageGallery: [
       cdn + 'v1727848670/Twins%20bedroom/usnrknadsmruceefa07h.webp',
@@ -368,6 +398,8 @@ export const projects: Project[] = [
     cover: cdn + 'v1631111504/casaAdrogue/casaAdrogue-4_c2uynr.jpg',
     description:
       "Selection of interior finishes while the couple's first home was under construction, collaborating closely with the builders to ensure my choices aligned with the project. I also chose furniture that complemented the design and met their lifestyle needs, creating inviting spaces for everyday living and entertaining.",
+    descriptionEs:
+      'Selección de terminaciones interiores mientras la primera casa de la pareja estaba en construcción, trabajando en estrecha colaboración con los constructores para asegurar que cada elección acompañara el proyecto. También se eligieron muebles que complementaran el diseño y respondieran a su estilo de vida, creando espacios cálidos para el día a día y las reuniones.',
     headerImage: '',
     imageGallery: [
       cdn + 'v1631111902/casaAdrogue/casaAdrogue-12_stsfrq.jpg',
@@ -396,6 +428,8 @@ export const projects: Project[] = [
     cover: cdn + 'v1631192816/deptoMaralExplanada/deptoMaralExplanada-3_tjl3wm.jpg',
     description:
       'Located in the first tower of the three-tower Maral Explanada complex, designed by renowned architect César Pelli, this brand-new beachfront holiday apartment needed to be customised for a family. The style was clear from the beginning: modern, comfortable, and easy to maintain, perfect for enjoying and relaxing year-round.',
+    descriptionEs:
+      'Ubicado en la primera torre del complejo de tres torres Maral Explanada, diseñado por el reconocido arquitecto César Pelli, este departamento de vacaciones frente al mar, a estrenar, necesitaba personalizarse para una familia. El estilo estuvo claro desde el principio: moderno, cómodo y fácil de mantener, perfecto para disfrutar y descansar todo el año.',
     headerImage: cdn + 'v1631193079/deptoMaralExplanada/deptoMaralExplanada-11_a1whlt.jpg',
     imageGallery: [
       cdn + 'v1631192782/deptoMaralExplanada/deptoMaralExplanada-2_hytkc3.jpg',
@@ -425,6 +459,8 @@ export const projects: Project[] = [
     cover: cdn + 'v1631211338/habInfantilCalaza/habCalaza-6_qpwphl.jpg',
     description:
       "The goal for this children's room was to have it ready to welcome Noha before his arrival and to reflect his mother's dream: a cosy space that radiated warmth, filled with handmade items. Inspired by a forest theme, the room was designed to be fun and entertaining for Noha.",
+    descriptionEs:
+      'El objetivo para esta habitación infantil era tenerla lista para recibir a Noha antes de su llegada y reflejar el sueño de su mamá: un espacio acogedor que irradiara calidez, lleno de objetos hechos a mano. Inspirada en el bosque, la habitación fue diseñada para ser divertida y estimulante para Noha.',
     headerImage: '',
     imageGallery: [
       cdn + 'v1631211338/habInfantilCalaza/habCalaza-6_qpwphl.jpg',
@@ -452,6 +488,8 @@ export const projects: Project[] = [
     cover: cdn + 'v1631217856/habInfantilMellizos/habInfantilMellis-11_endk3g.jpg',
     description:
       "Expecting twins, the mother wanted the design of the room to reflect her personal story. The space was inspired by 'rainbow babies,' those born after the loss of previous pregnancies. Just like a rainbow appears after a storm, these babies bring hope and joy after the sadness of loss.",
+    descriptionEs:
+      "Esperando mellizos, la mamá quería que el diseño de la habitación reflejara su historia personal. El espacio se inspiró en los 'bebés arcoíris', los que nacen después de la pérdida de embarazos anteriores. Así como el arcoíris aparece después de la tormenta, estos bebés traen esperanza y alegría después de la tristeza de la pérdida.",
     headerImage: cdn + 'v1631217915/habInfantilMellizos/habInfantilMellis-13_fng8dm.jpg',
     imageGallery: [
       cdn + 'v1631217856/habInfantilMellizos/habInfantilMellis-11_endk3g.jpg',
