@@ -183,6 +183,36 @@ export default {
   'services.consult.process.4.title':   'Moving Forward',
   'services.consult.process.4.desc':    "Following the consultation, you'll have a clearer vision and actionable direction to implement changes at your own pace and in a way that suits your lifestyle.",
 
+  // FAQs — visible on each service page and mirrored in FAQPage schema
+  'services.faq.title': 'Frequently asked questions',
+
+  'services.full.faq.1.q': 'How much does full interior design cost in Auckland?',
+  'services.full.faq.1.a': 'Pricing is tailored to each project. Full interior design services typically range from $3,500 to $5,000+ NZD, depending on scope and complexity.',
+  'services.full.faq.2.q': 'What does the full interior design service include?',
+  'services.full.faq.2.a': 'Everything from concept design and space planning to material and finish selection, custom furniture and styling, lighting design, coordination with suppliers and trades, project management, and final styling and installation.',
+  'services.full.faq.3.q': 'Do you take on projects outside Auckland?',
+  'services.full.faq.3.a': 'Yes. The studio is based in Mount Eden, Auckland, and works on residential projects across New Zealand. For homes further afield, the remote e-design service is also available worldwide.',
+  'services.full.faq.4.q': 'How does the process start?',
+  'services.full.faq.4.a': 'It begins with an initial conversation about your needs, lifestyle and how you want your space to feel. From there, a design concept is developed and refined through to documentation, implementation and final styling.',
+
+  'services.edesign.faq.1.q': 'How does the e-design service work?',
+  'services.edesign.faq.1.a': 'Everything happens online. After an initial consultation, you share photos, measurements and inspiration images, and you receive a complete design package — layout, moodboards, colour and material palette, and a shopping list with product links — to implement at your own pace.',
+  'services.edesign.faq.2.q': 'How much does e-design cost in New Zealand?',
+  'services.edesign.faq.2.a': 'The e-design service starts from $650 NZD + GST per room, depending on scope and complexity.',
+  'services.edesign.faq.3.q': "Can I use e-design if I don't live in Auckland?",
+  'services.edesign.faq.3.a': 'Yes. E-design is delivered entirely remotely, so it works anywhere in New Zealand and worldwide.',
+  'services.edesign.faq.4.q': 'What do I need to provide?',
+  'services.edesign.faq.4.a': 'Photos or a video of your space, basic measurements and any inspiration images, plus the preferences and budget we discuss in the initial consultation.',
+
+  'services.consult.faq.1.q': 'How much does an interior design consultation cost?',
+  'services.consult.faq.1.a': 'Consultations start from $250 NZD + GST, including travel within a 10km radius of Mount Eden and any additional research required to support your project.',
+  'services.consult.faq.2.q': 'Can the consultation be done online?',
+  'services.consult.faq.2.a': 'Yes. Consultations are available in-home around Auckland or online from anywhere in New Zealand.',
+  'services.consult.faq.3.q': 'What can we cover in a consultation?',
+  'services.consult.faq.3.a': 'Layout and furniture placement, colours, materials and styling, functionality and flow — and answers to your specific design questions.',
+  'services.consult.faq.4.q': 'What do I get after the consultation?',
+  'services.consult.faq.4.a': 'Personalised, practical recommendations tailored to your space, so you can move forward with confidence and avoid costly mistakes.',
+
   // SEO — per-page titles & meta descriptions (NZ-focused keywords)
   'seo.home.title':            'Interior Designer in Auckland, NZ | Florencia Nieto',
   'seo.home.description':      'Florencia Nieto is an Auckland interior designer creating considered, layered homes across New Zealand — full interior design, e-design and consultation services.',

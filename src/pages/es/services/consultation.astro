@@ -1,4 +1,6 @@
 ---
+export const prerender = true;
+
 import Layout from '../../../layouts/Layout.astro';
 import Section from '../../../components/Section.astro';
 import Heading from '../../../components/Heading.astro';
@@ -8,7 +10,8 @@ import Button from '../../../components/Button.astro';
 import StickyNote from '../../../components/StickyNote.astro';
 import ProcessSteps from '../../../components/ProcessSteps.astro';
 import { useTranslations } from '../../../i18n/utils';
-import { serviceSchema } from '../../../utils/schema';
+import Faq from '../../../components/Faq.astro';
+import { serviceSchema, faqSchema } from '../../../utils/schema';
 
 const t = useTranslations(Astro.currentLocale);
 
@@ -26,18 +29,24 @@ const steps = [
   { title: t('services.consult.process.3.title'), desc: t('services.consult.process.3.desc') },
   { title: t('services.consult.process.4.title'), desc: t('services.consult.process.4.desc') },
 ];
+const faqItems = [
+  { question: t('services.consult.faq.1.q'), answer: t('services.consult.faq.1.a') },
+  { question: t('services.consult.faq.2.q'), answer: t('services.consult.faq.2.a') },
+  { question: t('services.consult.faq.3.q'), answer: t('services.consult.faq.3.a') },
+  { question: t('services.consult.faq.4.q'), answer: t('services.consult.faq.4.a') },
+];
 ---
 
 <Layout
   title={t('seo.services.consult.title')}
   description={t('seo.services.consult.description')}
-  jsonLd={serviceSchema({
+  jsonLd={[serviceSchema({
     name: t('services.consult.title'),
     description: t('seo.services.consult.description'),
     url: '/es/services/consultation',
     serviceType: 'Interior Design',
     price: 250,
-  })}
+  }), faqSchema(faqItems)]}
 >
   <!-- Hero -->
   <Section noPaddingBottom>
@@ -86,6 +95,13 @@ const steps = [
   <!-- How it works -->
   <Section title={t('services.consult.process.title')}>
     <ProcessSteps steps={steps} />
+  </Section>
+
+  <Divider />
+
+  <!-- FAQ -->
+  <Section>
+    <Faq title={t('services.faq.title')} items={faqItems} />
   </Section>
 
   <Divider />

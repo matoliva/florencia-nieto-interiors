@@ -183,6 +183,36 @@ export default {
   'services.consult.process.4.title':   'Próximos Pasos',
   'services.consult.process.4.desc':    'Tras la consultoría, tendrás una visión más clara y una dirección concreta para implementar cambios a tu ritmo y de acuerdo con tu estilo de vida.',
 
+  // FAQs — visibles en cada página de servicio y reflejadas en el schema FAQPage
+  'services.faq.title': 'Preguntas frecuentes',
+
+  'services.full.faq.1.q': '¿Cuánto cuesta el diseño de interiores completo en Auckland?',
+  'services.full.faq.1.a': 'El precio se adapta a cada proyecto. Los servicios de diseño integral suelen ir de $3,500 a $5,000+ NZD, según el alcance y la complejidad.',
+  'services.full.faq.2.q': '¿Qué incluye el servicio de diseño de interiores completo?',
+  'services.full.faq.2.a': 'Todo: desde el concepto y la planificación del espacio hasta la selección de materiales y terminaciones, mobiliario a medida y estilismo, diseño de iluminación, coordinación con proveedores y gremios, gestión del proyecto, y el estilismo e instalación finales.',
+  'services.full.faq.3.q': '¿Tomás proyectos fuera de Auckland?',
+  'services.full.faq.3.a': 'Sí. El estudio está en Mount Eden, Auckland, y trabaja en proyectos residenciales en toda Nueva Zelanda. Para hogares más lejos, el servicio remoto de e-design está disponible en todo el mundo.',
+  'services.full.faq.4.q': '¿Cómo empieza el proceso?',
+  'services.full.faq.4.a': 'Empieza con una conversación inicial sobre tus necesidades, tu estilo de vida y cómo querés que se sienta tu espacio. A partir de ahí se desarrolla un concepto de diseño que se refina hasta la documentación, la implementación y el estilismo final.',
+
+  'services.edesign.faq.1.q': '¿Cómo funciona el servicio de e-design?',
+  'services.edesign.faq.1.a': 'Todo sucede online. Después de una consulta inicial, compartís fotos, medidas e imágenes de inspiración, y recibís un paquete de diseño completo — distribución, moodboards, paleta de colores y materiales, y una lista de compras con links a productos — para implementar a tu ritmo.',
+  'services.edesign.faq.2.q': '¿Cuánto cuesta el e-design en Nueva Zelanda?',
+  'services.edesign.faq.2.a': 'El servicio de e-design arranca desde $650 NZD + GST por ambiente, según el alcance y la complejidad.',
+  'services.edesign.faq.3.q': '¿Puedo usar e-design si no vivo en Auckland?',
+  'services.edesign.faq.3.a': 'Sí. El e-design se entrega de forma totalmente remota, así que funciona en cualquier lugar de Nueva Zelanda y del mundo.',
+  'services.edesign.faq.4.q': '¿Qué necesito aportar?',
+  'services.edesign.faq.4.a': 'Fotos o un video de tu espacio, medidas básicas e imágenes de inspiración, además de las preferencias y el presupuesto que charlamos en la consulta inicial.',
+
+  'services.consult.faq.1.q': '¿Cuánto cuesta una consultoría de diseño de interiores?',
+  'services.consult.faq.1.a': 'Las consultorías arrancan desde $250 NZD + GST, e incluyen el traslado dentro de un radio de 10 km de Mount Eden y cualquier investigación adicional necesaria para tu proyecto.',
+  'services.consult.faq.2.q': '¿La consultoría puede ser online?',
+  'services.consult.faq.2.a': 'Sí. Las consultorías están disponibles en tu hogar dentro de Auckland u online desde cualquier lugar de Nueva Zelanda.',
+  'services.consult.faq.3.q': '¿Qué podemos ver en una consultoría?',
+  'services.consult.faq.3.a': 'Distribución y ubicación del mobiliario, colores, materiales y estilismo, funcionalidad y flujo — y respuestas a tus preguntas puntuales de diseño.',
+  'services.consult.faq.4.q': '¿Qué me llevo después de la consultoría?',
+  'services.consult.faq.4.a': 'Recomendaciones personalizadas y prácticas adaptadas a tu espacio, para que avances con confianza y evites errores costosos.',
+
   // SEO — títulos y meta descripciones por página (keywords enfocadas en NZ)
   'seo.home.title':            'Diseñadora de Interiores en Auckland, NZ | Florencia Nieto',
   'seo.home.description':      'Florencia Nieto es diseñadora de interiores en Auckland y crea hogares cuidados y con capas en toda Nueva Zelanda — diseño integral, e-design y consultoría.',
