@@ -1,29 +1,29 @@
-# Operación SEO local
+# Local SEO operations
 
-## Antes de publicar
+## Before publishing
 
-- Ejecutar `npm run build` y comprobar en la deployment de preview la home, las tres páginas de servicios y un proyecto en cada idioma.
-- Comprobar que la URL canónica, los hreflang, el JSON-LD y la imagen Open Graph coinciden con la URL publicada.
-- Después de publicar contenido importante, usar Inspección de URL de Search Console para solicitar el rastreo de la home, la página editada y su alternativa en español.
+- Run `npm run build`, then check the home page, all three service pages, and one project in each language on the preview deployment.
+- Confirm that the canonical URL, hreflang annotations, JSON-LD, and Open Graph image match the published URL.
+- After publishing meaningful content, use Google Search Console URL Inspection to request crawling for the home page, the edited page, and its Spanish equivalent.
 
 ## Google Business Profile
 
-- Mantener un único perfil de área de servicio con el nombre real: `Florencia Nieto Interior Design`.
-- Usar la categoría primaria más específica disponible para la actividad (normalmente `Interior designer`), con categorías adicionales sólo si representan servicios reales.
-- Ocultar la dirección: no se atiende a clientes en ese domicilio. Configurar únicamente áreas que Florencia realmente visita y mantener teléfono, web y nombre idénticos a los del sitio.
-- Cargar fotos reales, bien iluminadas y representativas: proyectos terminados, proceso de diseño, muestras/materiales y retratos profesionales. No usar imágenes generadas ni fotos de stock como evidencia de proyectos.
+- Keep one service-area profile under the real business name: `Florencia Nieto Interior Design`.
+- Use the most specific available primary category for the business (normally `Interior designer`), and add secondary categories only for services that are genuinely offered.
+- Hide the address because clients are not served there. Set only the areas Florencia actually visits, and keep the name, phone number, and website identical to the site.
+- Upload real, well-lit, representative photography: completed projects, the design process, material samples, and professional portraits. Do not use AI-generated or stock images as evidence of completed work.
 
-## Reseñas y contenido
+## Reviews and case studies
 
-Al completar un proyecto, enviar un único pedido de reseña sin incentivo. Plantilla:
+After a project is complete, send one review request without offering an incentive. Template:
 
-> Gracias por confiarme tu proyecto. Si te resultó útil el proceso, ¿podrías compartir una reseña honesta en Google? Contar qué servicio recibiste y qué cambió en tu espacio ayuda a futuros clientes a entender cómo trabajo. [Enlace directo de reseña]
+> Thank you for trusting me with your project. If the process was helpful, would you consider sharing an honest Google review? Mentioning the service you received and what changed in your space helps future clients understand how I work. [Direct review link]
 
-- Responder cada reseña de forma individual, sin revelar datos privados del cliente.
-- Para cada caso de estudio nuevo, registrar antes de publicarlo: tipo de vivienda, suburbio o zona sólo si el cliente lo autoriza, desafío, alcance, decisiones de diseño, proveedores acreditados y 8–15 fotos propias con descripciones reales.
+- Respond to each review individually without disclosing the client's private information.
+- Before publishing a new case study, record the home type, suburb or area only with client approval, challenge, scope, design decisions, credited suppliers, and 8–15 original photographs with accurate descriptions.
 
-## Medición mensual
+## Monthly measurement
 
-- En Search Console, anotar impresiones, clics, CTR y posición de la home, servicios y proyectos; segmentar consultas por `Auckland`, `interior designer` y términos en español.
-- Revisar indexación, Core Web Vitals, errores de sitemap y URLs excluidas; priorizar cambios sólo cuando los datos muestren un problema.
-- Revisar conversiones del formulario, llamadas `tel:` y tráfico referido desde `chatgpt.com`, Google Maps e Instagram en la analítica disponible.
+- In Search Console, record impressions, clicks, CTR, and position for the home page, services, and projects; segment queries for `Auckland`, `interior designer`, and Spanish-language terms.
+- Review index coverage, Core Web Vitals, sitemap errors, and excluded URLs. Prioritize work only when the data identifies a real issue.
+- Review form conversions, `tel:` clicks, and referral traffic from `chatgpt.com`, Google Maps, and Instagram in the available analytics.

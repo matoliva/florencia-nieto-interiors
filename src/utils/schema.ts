@@ -147,13 +147,11 @@ interface ServiceInput {
   description: string;
   url: string;
   serviceType: string;
-  /** Lowest price in NZD, if advertised. */
-  price?: number;
 }
 
 /** A single service offering — used on each service detail page. */
-export function serviceSchema({ name, description, url, serviceType, price }: ServiceInput): Json {
-  const schema: Json = {
+export function serviceSchema({ name, description, url, serviceType }: ServiceInput): Json {
+  return {
     '@context': 'https://schema.org',
     '@type': 'Service',
     name,
@@ -167,17 +165,6 @@ export function serviceSchema({ name, description, url, serviceType, price }: Se
       name: BUSINESS_NAME,
     },
   };
-
-  if (price !== undefined) {
-    schema.offers = {
-      '@type': 'Offer',
-      price,
-      priceCurrency: 'NZD',
-      url: abs(url),
-    };
-  }
-
-  return schema;
 }
 
 /** A portfolio project — used on each project detail page. */
