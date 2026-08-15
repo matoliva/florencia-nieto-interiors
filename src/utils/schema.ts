@@ -12,6 +12,9 @@ export const PERSON_NAME = 'Florencia Nieto';
 export const EMAIL = 'hello@florencianieto.com';
 export const TELEPHONE = '+64 274 294 273';
 
+const BUSINESS_ID = `${SITE_URL}/#business`;
+const PERSON_ID = `${SITE_URL}/#florencia-nieto`;
+
 /** Public social/profile URLs used as `sameAs` (excludes mailto). */
 const SAME_AS = [
   'https://www.instagram.com/florencianieto.interiors/',
@@ -20,6 +23,11 @@ const SAME_AS = [
 ];
 
 const LOGO = `${SITE_URL}/icon-512x512.png`;
+
+const AREA_SERVED = [
+  { '@type': 'City', name: 'Auckland' },
+  { '@type': 'Country', name: 'New Zealand' },
+];
 
 type Json = Record<string, unknown>;
 
@@ -30,12 +38,13 @@ export function personSchema(): Json {
   return {
     '@context': 'https://schema.org',
     '@type': 'Person',
+    '@id': PERSON_ID,
     name: PERSON_NAME,
     jobTitle: 'Interior Designer',
     url: `${SITE_URL}/about`,
     image: LOGO,
     sameAs: SAME_AS,
-    worksFor: { '@type': 'Organization', name: BUSINESS_NAME },
+    worksFor: { '@id': BUSINESS_ID, name: BUSINESS_NAME },
     knowsAbout: [
       'Interior Design',
       'Residential Interior Design',
@@ -60,7 +69,7 @@ export function businessSchema(): Json {
   return {
     '@context': 'https://schema.org',
     '@type': ['ProfessionalService', 'LocalBusiness'],
-    '@id': `${SITE_URL}/#business`,
+    '@id': BUSINESS_ID,
     name: BUSINESS_NAME,
     description:
       'Auckland-based interior design studio led by Florencia Nieto, creating considered, layered residential interiors across New Zealand.',
@@ -70,25 +79,66 @@ export function businessSchema(): Json {
     email: EMAIL,
     telephone: TELEPHONE,
     priceRange: '$$',
-    founder: { '@type': 'Person', name: PERSON_NAME },
+    founder: { '@type': 'Person', '@id': PERSON_ID, name: PERSON_NAME },
     sameAs: SAME_AS,
-    areaServed: [
-      { '@type': 'City', name: 'Auckland' },
-      { '@type': 'Country', name: 'New Zealand' },
-    ],
+    areaServed: AREA_SERVED,
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Auckland',
       addressRegion: 'Auckland',
       addressCountry: 'NZ',
     },
-    // Approximate (Mount Eden, Auckland) — enables LocalBusiness map eligibility.
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: -36.877,
-      longitude: 174.76,
-    },
     knowsLanguage: ['en', 'es'],
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'customer service',
+      email: EMAIL,
+      telephone: TELEPHONE,
+      availableLanguage: ['English', 'Spanish'],
+    },
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Interior design services',
+      itemListElement: [
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Full Interior Design Service',
+            url: `${SITE_URL}/services/full-interior-design`,
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'E-Design Service',
+            url: `${SITE_URL}/services/e-design`,
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Interior Design Consultation',
+            url: `${SITE_URL}/services/consultation`,
+          },
+        },
+      ],
+    },
+  };
+}
+
+/** The public website, linked to the studio entity on the home page. */
+export function websiteSchema(): Json {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${SITE_URL}/#website`,
+    name: 'Florencia Nieto',
+    url: SITE_URL,
+    inLanguage: ['en-NZ', 'es'],
+    publisher: { '@id': BUSINESS_ID },
   };
 }
 
@@ -97,40 +147,24 @@ interface ServiceInput {
   description: string;
   url: string;
   serviceType: string;
-  /** Lowest price in NZD, if advertised. */
-  price?: number;
 }
 
 /** A single service offering — used on each service detail page. */
-export function serviceSchema({ name, description, url, serviceType, price }: ServiceInput): Json {
-  const schema: Json = {
+export function serviceSchema({ name, description, url, serviceType }: ServiceInput): Json {
+  return {
     '@context': 'https://schema.org',
     '@type': 'Service',
     name,
     description,
     serviceType,
     url: abs(url),
-    areaServed: [
-      { '@type': 'City', name: 'Auckland' },
-      { '@type': 'Country', name: 'New Zealand' },
-    ],
+    areaServed: AREA_SERVED,
     provider: {
+      '@id': BUSINESS_ID,
       '@type': 'ProfessionalService',
       name: BUSINESS_NAME,
-      '@id': `${SITE_URL}/#business`,
     },
   };
-
-  if (price !== undefined) {
-    schema.offers = {
-      '@type': 'Offer',
-      price,
-      priceCurrency: 'NZD',
-      url: abs(url),
-    };
-  }
-
-  return schema;
 }
 
 /** A portfolio project — used on each project detail page. */
@@ -139,6 +173,7 @@ export function projectSchema(input: {
   description: string;
   url: string;
   images: string[];
+  inLanguage: 'en' | 'es';
 }): Json {
   return {
     '@context': 'https://schema.org',
@@ -147,8 +182,9 @@ export function projectSchema(input: {
     description: input.description,
     url: abs(input.url),
     image: input.images.map(abs),
-    creator: { '@type': 'Person', name: PERSON_NAME },
+    creator: { '@type': 'Person', '@id': PERSON_ID, name: PERSON_NAME },
     about: 'Interior Design',
+    inLanguage: input.inLanguage,
   };
 }
 

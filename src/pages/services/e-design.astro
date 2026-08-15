@@ -38,7 +38,6 @@ const steps = [
     description: t('seo.services.edesign.description'),
     url: '/services/e-design',
     serviceType: 'Interior Design',
-    price: 650,
   })}
 >
   <!-- Hero -->
@@ -56,9 +55,10 @@ const steps = [
   <Section noPaddingTop>
     <div class="flex flex-col lg:flex-row gap-12 lg:gap-16 xl:gap-24">
 
-      <!-- Left: description, included, pricing -->
+      <!-- Left: description and included items -->
       <div class="flex-1 min-w-0">
-        <Body class="mb-10 max-w-prose">{t('services.edesign.description')}</Body>
+        <Body class="mb-3 max-w-prose">{t('services.edesign.description')}</Body>
+        <Body class="mb-10 max-w-prose text-text-secondary">{t('services.edesign.availability')}</Body>
 
         <Heading variant="h2" class="mb-6">{t('services.edesign.included.title')}</Heading>
         <ul class="space-y-3 mb-10">
